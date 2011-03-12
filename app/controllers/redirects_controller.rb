@@ -22,10 +22,7 @@ class RedirectsController < ApplicationController
                :remote_addr => headers['REMOTE_ADDR']
                }
     entry.reverse_merge(args)
-    if @domain
-      @domain.requests << RequestLog.new(entry)
-    else
-      RequestLog.create(entry)
-    end
+    log = RequestLog.create(entry)
+    @domain.requests << log if @domain
   end
 end

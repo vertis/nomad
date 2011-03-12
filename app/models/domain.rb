@@ -4,5 +4,5 @@ class Domain
   field :catch_all, :type => String
 
   embeds_many :redirects
-  embeds_many :requests, :class_name => 'RequestLog'
+  references_many :requests, :class_name => 'RequestLog'
 end
