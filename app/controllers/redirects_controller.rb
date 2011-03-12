@@ -5,7 +5,7 @@ class RedirectsController < ApplicationController
         redirect_to redirect.target, :status => 301
         return
       elsif @domain.catch_all
-        log_request(:status => 301, :target => @domain.catch_all)
+        log_request(:status => 301, :redirected_to => @domain.catch_all)
         redirect_to @domain.catch_all, :status => 301
         return
       end
@@ -21,7 +21,7 @@ class RedirectsController < ApplicationController
                :request_path => headers['REQUEST_PATH'],
                :remote_addr => headers['HTTP_X_REAL_IP']
                }
-    entry.merge(args)
+    entry.merge!(args)
     log = RequestLog.create(entry)
     @domain.requests << log if @domain
   end
