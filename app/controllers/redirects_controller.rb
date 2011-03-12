@@ -10,7 +10,7 @@ class RedirectsController < ApplicationController
         return
       end
     end
-    log_request
+    log_request(:server_name => headers['SERVER_NAME'])
     render :text => 'Not Found', :status => 404
   end
 
@@ -18,8 +18,8 @@ class RedirectsController < ApplicationController
     headers = request.headers
     entry = {  :status => (args[:status]||404),
                :timestamp => Time.now,
-               :request_uri => headers['REQUEST_URI'],
-               :remote_addr => headers['REMOTE_ADDR']
+               :request_path => headers['REQUEST_PATH'],
+               :remote_addr => headers['HTTP_X_REAL_IP']
                }
     entry.reverse_merge(args)
     log = RequestLog.create(entry)
