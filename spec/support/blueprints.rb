@@ -15,3 +15,7 @@ end
 Redirect.blueprint do
   # Attributes here
 end
+
+RequestLog.blueprint do
+  # Attributes here
+end
