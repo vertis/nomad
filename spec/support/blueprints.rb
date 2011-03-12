@@ -7,3 +7,11 @@ require 'machinist/active_record'
 #     title { "Post #{sn}" }
 #     body  { "Lorem ipsum..." }
 #   end
+
+Domain.blueprint do
+  # Attributes here
+end
+
+Redirect.blueprint do
+  # Attributes here
+end
