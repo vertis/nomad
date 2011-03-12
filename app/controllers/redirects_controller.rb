@@ -6,7 +6,7 @@ class RedirectsController < ApplicationController
         return
       elsif @domain.catch_all
         log_request(:status => 301, :target => @domain.catch_all)
-        redirect_to @domain.catch_all
+        redirect_to @domain.catch_all, :status => 301
         return
       end
     end
