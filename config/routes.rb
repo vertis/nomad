@@ -1,4 +1,6 @@
 Threezeroone::Application.routes.draw do
+  get "manage/request_details"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match '*path' => 'redirects#index'
