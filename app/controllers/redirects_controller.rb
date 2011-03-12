@@ -16,12 +16,12 @@ class RedirectsController < ApplicationController
 
   def log_request(args={})
     headers = request.headers
-    entry = {  :status => (args[:status]||404),
+    entry = {  :status => 404,
                :timestamp => Time.now,
                :request_path => headers['REQUEST_PATH'],
                :remote_addr => headers['HTTP_X_REAL_IP']
                }
-    entry.reverse_merge(args)
+    entry.merge(args)
     log = RequestLog.create(entry)
     @domain.requests << log if @domain
   end
