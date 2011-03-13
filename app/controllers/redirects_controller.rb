@@ -1,6 +1,9 @@
 class RedirectsController < ApplicationController
   def index
-    if @domain = Domain.where(:name => request.headers['HTTP_HOST']).first
+    hostname = request.headers['HTTP_HOST']
+    @domain = Domain.where(:name => /#{hostname}/).first
+    @domain ||= Domain.where(:alternative_names => /#{hostname}/).first
+    if @domain
       if redirect = @domain.redirects.where(:old_path => /^#{params['path']}/).first
         redirect_to redirect.target, :status => 301
         return
