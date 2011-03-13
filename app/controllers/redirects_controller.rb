@@ -4,7 +4,7 @@ class RedirectsController < ApplicationController
     @domain = Domain.where(:name => /#{hostname}/).first
     @domain ||= Domain.where(:alternative_names => /#{hostname}/).first
     if @domain
-      if redirect = @domain.redirects.where(:old_path => /^#{params['path']}/).first
+      if params['path'].present? && redirect = @domain.redirects.where(:old_path => /^#{params['path']}/).first
         redirect_to redirect.target, :status => 301
         return
       elsif @domain.catch_all
