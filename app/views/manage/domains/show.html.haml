@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @manage_domain.name
+%p
+  %b Catch all:
+  = @manage_domain.catch_all
+%p
+  %b Alternative names:
+  = @manage_domain.alternative_names
+
+= link_to 'Edit', edit_manage_domain_path(@manage_domain)
+\|
+= link_to 'Back', manage_domains_path

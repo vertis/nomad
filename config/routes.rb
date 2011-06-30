@@ -1,5 +1,12 @@
 Threezeroone::Application.routes.draw do
+  devise_for :users
+
+  namespace :manage do
+    resources :domains
+  end
+
   get 'manage' => 'manage#index'
+  get 'manage/domains' => 'manage/domains#index', :as => :user_root
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
