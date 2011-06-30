@@ -2,14 +2,27 @@
 
 %p
   %b Name:
-  = @manage_domain.name
+  = @domain.name
 %p
   %b Catch all:
-  = @manage_domain.catch_all
+  = @domain.catch_all
 %p
   %b Alternative names:
-  = @manage_domain.alternative_names
+  = @domain.alternative_names
 
 = link_to 'Edit', edit_manage_domain_path(@manage_domain)
 \|
 = link_to 'Back', manage_domains_path
+%h2 The last 30 catch all requests (unhandled)
+%table
+  %tr
+    %th Request Path
+    %th Redirected To
+    %th Timestamp
+    %th Options
+  - @requests.each do |req|
+    %tr
+      %td= req[:request_path]
+      %td= req[:redirected_to]
+      %td= req[:timestamp]
+      %td= link_to 'Destroy', manage_domain_request_path(@domain, req), :confirm => 'Are you sure?', :method => :delete

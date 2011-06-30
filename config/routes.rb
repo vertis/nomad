@@ -2,7 +2,9 @@ Threezeroone::Application.routes.draw do
   devise_for :users
 
   namespace :manage do
-    resources :domains
+    resources :domains do
+      resources :requests, :only => [:destroy]
+    end
   end
 
   get 'manage' => 'manage#index'

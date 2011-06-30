@@ -14,8 +14,8 @@ class Manage::DomainsController < ApplicationController
   # GET /manage/domains/1
   # GET /manage/domains/1.xml
   def show
-    @manage_domain = current_user.domains.find(params[:id])
-
+    @domain = current_user.domains.find(params[:id])
+    @requests = @domain.requests.limit(30).order_by([:timestamp, :desc])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @manage_domain }
