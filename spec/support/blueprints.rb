@@ -19,3 +19,7 @@ end
 RequestLog.blueprint do
   # Attributes here
 end
+
+User.blueprint do
+  # Attributes here
+end

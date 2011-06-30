@@ -1,5 +1,5 @@
 Threezeroone::Application.routes.draw do
-  get "manage/request_details"
+  get 'manage' => 'manage#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,5 @@
 class ManageController < ApplicationController
-  def request_details
-    render :text => "#{request.inspect}"
+  before_filter :authenticate_user!
+  def index
   end
-
 end

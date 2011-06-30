@@ -22,6 +22,8 @@
   # Easy jQuery helpers for rails3
   gem 'jquery-rails'
 
+  gem 'nifty-generators'
+
   group :test do
     gem 'machinist_mongo', :require => 'machinist/mongoid', :git => 'http://github.com/nmerouze/machinist_mongo.git', :branch => 'machinist2'
 
