@@ -7,8 +7,7 @@ Threezeroone::Application.routes.draw do
     end
   end
 
-  get 'manage' => 'manage#index'
-  get 'manage/domains' => 'manage/domains#index', :as => :user_root
+  #get 'manage/domains' => 'manage/domains#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
