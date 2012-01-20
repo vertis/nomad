@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag "application" %>  
-    <%= javascript_include_tag "application", "http://cdn.sublimevideo.net/js/3s7oes9q.js" %>
-    <%= csrf_meta_tag %>
-    <%= yield(:head) %>
-  </head>
-  <body>
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+<head>
+  <title>Threezeroone</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="padding-top: 60px">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3><%= link_to "Threezeroone", "/" %></h3>
+        <ul class="nav">
+          <li><%= link_to "Link1", "/path1"  %></li>
+          <li><%= link_to "Link2", "/path2"  %></li>
+          <li><%= link_to "Link3", "/path3"  %></li>
+        </ul>
+      </div>
     </div>
-  </body>
+  </div>
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="span11">
+          <%= yield %>
+        </div>
+        <div class="span1">&nbsp;</div>
+        <div class="span4">
+          <h3>Sidebar</h3>
+          <ul>
+            <li><%= link_to "Link1", "/path1"  %></li>
+            <li><%= link_to "Link2", "/path2"  %></li>
+            <li><%= link_to "Link3", "/path3"  %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>

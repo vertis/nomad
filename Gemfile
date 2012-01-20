@@ -25,6 +25,7 @@
   gem "haml-rails"
 
   gem 'nifty-generators'
+  gem 'twitter-bootstrap-rails', "~> 1.4.3"
 
   group :test do
     gem 'machinist_mongo', :require => 'machinist/mongoid', :git => 'http://github.com/nmerouze/machinist_mongo.git', :branch => 'machinist2'
