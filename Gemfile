@@ -31,6 +31,7 @@
     gem 'mongoid-rspec'
     gem 'rcov'
 
+    gem 'database_cleaner'
     gem 'capybara'
     gem 'cucumber-rails'
     gem 'cucumber'
