@@ -1,0 +1,16 @@
+%ul.nav
+%ul.nav.secondary-nav
+  - if user_signed_in?
+    %li.dropdown
+      %a{:href => "#", :class => 'dropdown-toggle'}
+        = current_user.email
+      %ul.dropdown-menu
+        %li
+          %a{:href => '/users/edit'} Account settings
+        %li.divider
+        %li
+          %a{:href => '/users/sign_out' } Sign Out
+  - else
+    %li
+      %a{:href => new_user_session_path } Sign In  
+

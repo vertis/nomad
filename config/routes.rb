@@ -1,4 +1,6 @@
 Threezeroone::Application.routes.draw do
+  get "welcome/index"
+
   devise_for :users
 
   namespace :manage do
@@ -8,7 +10,7 @@ Threezeroone::Application.routes.draw do
   end
 
   #get 'manage/domains' => 'manage/domains#index'
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match '*path' => 'redirects#index'
@@ -58,7 +60,8 @@ Threezeroone::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "redirects#index"
+  root :to => "welcome#index", :constraints => lambda{|req| req.host =~ /threezeroone|127.0.0.1/ }
+  root :to => "redirects#index", :constraints => lambda{|req| req.host !~ /threezeroone/ }
 
   # See how all your routes lay out with "rake routes"
 

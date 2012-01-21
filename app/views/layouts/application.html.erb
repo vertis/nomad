@@ -7,16 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body style="padding-top: 60px">
-  <div class="topbar">
+  <div class="topbar" data-dropdown="dropdown">
     <div class="topbar-inner">
       <div class="container">
         <h3><%= link_to "three-zero-one", "/" %></h3>
-        <ul class="nav">
-        </ul>
+        <%= render :partial => 'common/nav' %>
       </div>
     </div>
   </div>
   <div class="container">
+    <%= yield :hero_unit %>
     <div class="content">
       <div class="row">
       </div>
