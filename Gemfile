@@ -26,6 +26,8 @@
 
   gem 'nifty-generators'
   gem 'twitter-bootstrap-rails', "~> 1.4.3"
+  
+  gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
   group :test do
     gem 'machinist_mongo', :require => 'machinist/mongoid', :git => 'http://github.com/nmerouze/machinist_mongo.git', :branch => 'machinist2'

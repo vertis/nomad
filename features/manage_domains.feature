@@ -13,7 +13,7 @@ Scenario: Create a new domain
   Then I should be on the new domain page
   When I enter 'domain1.test' into the 'Name' field
   And I enter 'http://www.youtube.com' into the 'Catch all' field
-  And I click the 'Save' button
+  And I click the 'Create Domain' button
   Then I should be on the manage domains page
   And I should see 'domain1.test'
   And I should see 'http://www.youtube.com'

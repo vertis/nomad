@@ -25,11 +25,11 @@ class Manage::DomainsController < ApplicationController
   # GET /manage/domains/new
   # GET /manage/domains/new.xml
   def new
-    @manage_domain = current_user.domains.new
+    @domain = current_user.domains.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @manage_domain }
+      format.xml  { render :xml => @domain }
     end
   end
 
@@ -42,7 +42,7 @@ class Manage::DomainsController < ApplicationController
   # POST /manage/domains.xml
   def create
     domain = params[:domain]
-    domain[:alternative_names] = domain[:alternative_names].split(',').map(&:strip)
+    #domain[:alternative_names] = domain[:alternative_names].split(',').map(&:strip)
     @manage_domain = current_user.domains.new(domain)
     Rails.logger.debug(@manage_domain.inspect)
     respond_to do |format|

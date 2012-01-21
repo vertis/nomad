@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 95f711366184cf38ebf9a571387ba5006114a40a
+  specs:
+    simple_form (2.0.0.dev)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+
+GIT
   remote: http://github.com/nmerouze/machinist_mongo.git
   revision: fa4819c4e1233a4e3ce527b68af8aeee85dfc6c3
   branch: machinist2
@@ -225,6 +233,7 @@ DEPENDENCIES
   rcov
   rspec-rails (>= 2.0.1)
   sass-rails (~> 3.1.0)
+  simple_form!
   spork
   twitter-bootstrap-rails (~> 1.4.3)
   uglifier

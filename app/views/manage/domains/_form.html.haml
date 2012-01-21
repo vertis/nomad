@@ -1,19 +1,6 @@
-= form_for [:manage, @manage_domain] do |f|
-  -if @manage_domain.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@manage_domain.errors.count, "error")} prohibited this manage_domain from being saved:"
-      %ul
-        - @manage_domain.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :catch_all
-    = f.text_field :catch_all
-  .field
-    = f.label :alternative_names
-    = f.text_field :alternative_names
+= simple_form_for [:manage, @domain], :wrapper => :inline do |f|
+  = f.input :name, :input_html => { :class => "span12" }, :hint => "add your source domain here"
+  = f.input :catch_all, :input_html => { :class => "span12" }, :hint => "add the default redirect target here"
   .actions
-    = f.submit 'Save'
+    = f.button :submit, :class => 'primary'
+    
