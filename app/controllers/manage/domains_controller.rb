@@ -47,7 +47,7 @@ class Manage::DomainsController < ApplicationController
     Rails.logger.debug(@manage_domain.inspect)
     respond_to do |format|
       if @manage_domain.save
-        format.html { redirect_to([:manage, @manage_domain], :notice => 'Domain was successfully created.') }
+        format.html { redirect_to(manage_domains_path, :notice => 'Domain added successfully.') }
         format.xml  { render :xml => @manage_domain, :status => :created, :location => @manage_domain }
       else
         format.html { render :action => "new" }
