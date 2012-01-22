@@ -13,14 +13,14 @@ class Manage::DomainsController < ApplicationController
 
   # GET /manage/domains/1
   # GET /manage/domains/1.xml
-  def show
-    @domain = current_user.domains.find(params[:id])
-    @requests = @domain.requests.limit(30).order_by([:timestamp, :desc])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @manage_domain }
-    end
-  end
+  # def show
+  #   @domain = current_user.domains.find(params[:id])
+  #   @requests = @domain.requests.limit(30).order_by([:timestamp, :desc])
+  #   respond_to do |format|
+  #     format.html # show.html.erb
+  #     format.xml  { render :xml => @manage_domain }
+  #   end
+  # end
 
   # GET /manage/domains/new
   # GET /manage/domains/new.xml
@@ -34,8 +34,8 @@ class Manage::DomainsController < ApplicationController
   end
 
   # GET /manage/domains/1/edit
-  def edit
-    @manage_domain = current_user.domains.find(params[:id])
+  def show
+    @domain = current_user.domains.find(params[:id])
   end
 
   # POST /manage/domains

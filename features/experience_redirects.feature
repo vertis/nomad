@@ -1,7 +1,7 @@
 Feature: Manage redirects
-  In order to migrate my website to a new domain
-  As a user
-  I want to maintain my SEO
+  In order to find what I'm looking for
+  As a consumer
+  I want to be redirected to the new location of the content
 
 @javascript
 Scenario:

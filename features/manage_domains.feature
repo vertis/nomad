@@ -17,3 +17,13 @@ Scenario: Create a new domain
   And I should see 'domain1.test'
   And I should see 'http://www.youtube.com'
   And I should see 'Domain added successfully'
+  
+@javascript
+Scenario: Manage an existing domain
+  Given I am an existing user
+  And I have have setup a domain named 'domain1.test' with a catch all of 'http://www.youtube.com/'
+  And I am logged in
+  And I am on the manage domains page
+  Then I should see 'Manage'
+  When I click on the 'Manage' link
+  Then I should be on the manage domain page for 'domain1.test'
