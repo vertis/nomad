@@ -8,17 +8,14 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the home\s?page/
+    when /the home page/
       '/'
-    when /the new redirects page/
-      new_redirects_path
-
-
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
+    when /new user registrations page/
+      new_user_registration_path
+    when /manage domains page/
+      manage_domains_path
+    when /new domain page/
+      new_manage_domain_path
 
     else
       begin

@@ -16,7 +16,7 @@ Given /^I am logged in$/ do
   visit '/users/sign_in'
   fill_in "user_email", :with=>@user_email
   fill_in "user_password", :with=>@user_password
-  click_button "Sign in"
+  click_button "Sign In"
 end
 
 When /^I go to '(.*)'$/ do |url|
