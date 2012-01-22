@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body style="padding-top: 60px">
   <div class="topbar" data-dropdown="dropdown">
@@ -16,18 +17,8 @@
     </div>
   </div>
   <div class="container">
-    <%= yield :hero_unit %>
-    <div class="content">
-      <div class="row">
-      </div>
-      <div class="row">
-        <div class="span16">
-          <%= render :partial => 'common/alerts' %>
-          <%= yield %>
-        </div>
-        </div>
-      </div>
-    </div>
+    <%= render :partial => 'common/alerts' %>
+    <%= yield %>
   </div>
 </body>
 </html>

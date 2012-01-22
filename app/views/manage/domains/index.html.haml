@@ -1,24 +1,25 @@
-.options{:style => 'text-align:right; margin-bottom:20px'}
-  = link_to 'New Domain', new_manage_domain_path, :class => 'btn primary'
-%h1 Domains
-%table
-  %tr
-    %th Name
-    %th Catch all
-    %th Alternative names
-    %th
-    %th
-    %th
+.content
+  .row
+    .span16
+      .options{:style => 'text-align:right; margin-bottom:20px'}
+        = link_to 'New Domain', new_manage_domain_path, :class => 'btn primary'
+      %h1 Domains
+      %table
+        %tr
+          %th Name
+          %th Catch all
+          %th Alternative names
+          %th
+          %th
+          %th
 
-  - @manage_domains.each do |domain|
-    %tr
-      %td= domain.name
-      %td= domain.catch_all
-      %td= domain.alternative_names
-      %td= link_to 'Show', manage_domain_path(domain)
-      %td= link_to 'Edit', edit_manage_domain_path(domain)
-      %td= link_to 'Destroy', manage_domain_path(domain), :confirm => 'Are you sure?', :method => :delete
-
-%br
+        - @manage_domains.each do |domain|
+          %tr
+            %td= domain.name
+            %td= domain.catch_all
+            %td= domain.alternative_names
+            %td= link_to 'Show', manage_domain_path(domain)
+            %td= link_to 'Edit', edit_manage_domain_path(domain)
+            %td= link_to 'Destroy', manage_domain_path(domain), :confirm => 'Are you sure?', :method => :delete
 
 
