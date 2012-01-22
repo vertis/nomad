@@ -14,7 +14,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)  
 end 
 
-module Threezeroone
+module Divert
   class Application < Rails::Application
     # Enable the asset pipeline  
     config.assets.enabled = true  
