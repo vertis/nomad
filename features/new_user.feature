@@ -7,11 +7,11 @@ Feature: Sign up for an account
 Scenario: The home page
   Given I am a new user
   When I am on the home page
-  Then I should see 'divert'
+  Then I should see 'nomad'
   And I should see 'Sign In'
   And I should see 'Permanent Redirect'
   And I should see 'Get started now »'
-  And I should see 'Occassionally you'll want to move a website to a different domain and/or a different platform. Maybe you're defecting from Wordpress to Jekyll. divert will help you setup permanent redirects for each of your pages to it's new home.'
+  And I should see 'Occassionally you'll want to move a website to a different domain and/or a different platform. Maybe you're defecting from Wordpress to Jekyll. nomad will help you setup permanent redirects for each of your pages to it's new home.'
   
 @javascript
 Scenario: Creating an account

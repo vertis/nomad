@@ -1,4 +1,4 @@
-Divert::Application.routes.draw do
+Nomad::Application.routes.draw do
   get "welcome/index"
 
   devise_for :users
@@ -60,8 +60,8 @@ Divert::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "welcome#index", :constraints => lambda{|req| req.host =~ /divert|127.0.0.1/ }
-  root :to => "redirects#index", :constraints => lambda{|req| req.host !~ /divert/ }
+  root :to => "welcome#index", :constraints => lambda{|req| req.host =~ /nomad|127.0.0.1/ }
+  root :to => "redirects#index", :constraints => lambda{|req| req.host !~ /nomad/ }
 
   # See how all your routes lay out with "rake routes"
 

@@ -14,7 +14,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)  
 end 
 
-module Divert
+module Nomad
   class Application < Rails::Application
     # Enable the asset pipeline  
     config.assets.enabled = true  
