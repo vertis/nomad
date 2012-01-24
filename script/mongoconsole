@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require 'yaml'
+config_file = File.expand_path('../../config/mongoid.yml',  __FILE__)
+#require File.expand_path('../../config/application',  __FILE__)
+config = YAML.load(File.read(config_file))[ENV["RAILS_ENV"]||"development"]
+config
+
+cmd = "mongo"
+cmd += " --host #{config["host"]}" if config["host"]
+cmd += " --port #{config["port"]}" if config["port"]
+cmd += " -u #{config["username"]}" if config["username"]
+cmd += " -p #{config["password"]}" if config["password"]
+cmd += " #{config["database"]}" if config["database"]
+exec cmd

@@ -1,3 +1,14 @@
 %h1 Manage Domain
-= render 'form'
+%ul{:class => 'tabs', :"data-tabs" => 'tabs'}
+  %li{:class => 'active'}
+    %a{:href => '#basic'} Basic Details
+  %li
+    %a{:href => '#mappings'} Mappings
+  
+
+.tab-content
+  .tab-pane{:id => 'basic', :class => 'active'}
+    = render 'basic_form'
+  .tab-pane{:id => 'mappings'}
+    = render 'mappings'
 

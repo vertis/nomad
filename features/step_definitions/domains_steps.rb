@@ -1,7 +1,3 @@
-Given /^I am on the manage domains page$/ do
-  visit '/manage/domains'
-end
-
 Then /^I should see '(.*)'$/ do |text|
   page.should have_content(text)
 end

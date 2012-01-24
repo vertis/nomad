@@ -33,9 +33,10 @@ class Manage::DomainsController < ApplicationController
     end
   end
 
-  # GET /manage/domains/1/edit
+  # GET /manage/domains/1
   def show
     @domain = current_user.domains.find(params[:id])
+    @mappings = @domain.mappings
   end
 
   # POST /manage/domains

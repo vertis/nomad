@@ -12,7 +12,7 @@ Domain.blueprint do
   # Attributes here
 end
 
-Redirect.blueprint do
+Mapping.blueprint do
   # Attributes here
 end
 

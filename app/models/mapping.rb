@@ -1,8 +1,8 @@
 require 'net/http'
-class Redirect
+class Mapping
   include Mongoid::Document
-  field :old_path, :type => String
-  field :target, :type => String
+  field :source_path, :type => String
+  field :target_path, :type => String
 
   embedded_in :domain
 
