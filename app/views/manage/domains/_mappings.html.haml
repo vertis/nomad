@@ -11,14 +11,26 @@
       %tr
         %td= mapping.source_path
         %td= mapping.target
-        %td Edit
+        %td
+          = link_to 'Edit', '#', :"data-controls-modal" => "mapping-#{mapping.id}", :"data-backdrop" => "static"
+          .div{:id => "mapping-#{mapping.id}", :class => "modal hide fade in", :style => "display: none; "}
+            = simple_form_for([:manage, @domain, mapping], :wrapper => :inline) do |f|
+              .modal-header
+                %a.close{:href => "#"} ×
+                %h3 Edit mapping
+              .modal-body
+                = f.input :source_path, :input_html => { :class => "span6" }, :placeholder => "/example"
+                = f.input :target, :input_html => { :class => "span6" }, :placeholder => 'http://www.blekko.com/ws/example'
+              .modal-footer
+                = f.button :submit, :class => 'primary'
 
 #new-mapping.modal.hide.fade.in{:style => "display: none; "}
-  - simple_form_for(@domain.mappings.new) do |f|
+  = simple_form_for([:manage, @domain, @domain.mappings.new], :wrapper => :inline) do |f|
     .modal-header
       %a.close{:href => "#"} ×
       %h3 Add new mapping
     .modal-body
-      %p = f.input :source_path
+      = f.input :source_path, :input_html => { :class => "span6" }, :placeholder => "/example"
+      = f.input :target, :input_html => { :class => "span6" }, :placeholder => 'http://www.blekko.com/ws/example'
     .modal-footer
-      %a.btn.secondary{:href => "#"} Secondary
+      = f.button :submit, :class => 'primary'

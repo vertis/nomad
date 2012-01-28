@@ -6,6 +6,7 @@ Nomad::Application.routes.draw do
   namespace :manage do
     resources :domains do
       resources :requests, :only => [:destroy]
+      resources :mappings, :controller => "domains/mappings"
     end
   end
 
