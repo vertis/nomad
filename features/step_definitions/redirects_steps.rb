@@ -8,9 +8,15 @@ Given /^I am an existing user$/ do
   @user = User.create!(:email => @user_email, :password => @user_password, :password_confirmation => @user_password)
 end
 
-Given /^I have have setup a domain named '(.*)' with a catch all of '(.*)'$/ do |source_domain, target_domain|
+Given /^I have setup a domain named '(.*)' with a catch all of '(.*)'$/ do |source_domain, target_domain|
   @user.domains.create(:name => source_domain, :catch_all => target_domain)
 end
+
+Given /^I have setup a mapping for the domain named '(.+)' with a source of '(.+)' and a target of '(.+)'$/ do |domain_name, source_path, target|
+  @domain = Domain.where(:name => domain_name).first
+  @domain.mappings.create(:source_path => source_path, :target => target) 
+end
+
 
 Given /^I am logged in$/ do
   visit '/users/sign_in'
@@ -20,9 +26,9 @@ Given /^I am logged in$/ do
 end
 
 When /^I go to '(.*)'$/ do |url|
-  server_port = URI.parse(current_url).port
+  visit '/' # Need to have the server running to get the correct port for domain based tests
   domain_under_test = URI.parse(url)
-  domain_under_test.port = server_port
+  domain_under_test.port = Capybara::Server.ports[Capybara.app.object_id]
   visit domain_under_test.to_s
 end
 

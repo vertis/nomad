@@ -1,14 +1,24 @@
 .options{:style => 'text-align:right; margin-bottom:20px'}
-  = link_to 'Add a mapping', '#', :class => 'btn primary'
+  = link_to 'Add a mapping', '#', :class => 'btn primary', :"data-controls-modal" => "new-mapping", :"data-backdrop" => "static"
 %table
   %thead
     %tr
       %th Source Path
-      %th Target Path
+      %th Target
       %th
   %tbody
     - @mappings.each do |mapping|
       %tr
         %td= mapping.source_path
-        %td= mapping.target_path
+        %td= mapping.target
         %td Edit
+
+#new-mapping.modal.hide.fade.in{:style => "display: none; "}
+  - simple_form_for(@domain.mappings.new) do |f|
+    .modal-header
+      %a.close{:href => "#"} ×
+      %h3 Add new mapping
+    .modal-body
+      %p = f.input :source_path
+    .modal-footer
+      %a.btn.secondary{:href => "#"} Secondary

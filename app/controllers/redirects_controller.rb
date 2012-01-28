@@ -3,10 +3,10 @@ class RedirectsController < ApplicationController
     hostname = request.headers['HTTP_HOST']
     hostname, port = hostname.split(':')
     @domain = Domain.where(:name => /#{hostname}/).first
-    @domain ||= Domain.where(:alternative_names => /#{hostname}/).first
+    #@domain ||= Domain.where(:alternative_names => /#{hostname}/).first
     if @domain
-      if params['path'].present? && redirect = @domain.redirects.where(:old_path => /^#{params['path']}/).first
-        redirect_to redirect.target, :status => 301
+      if params['path'].present? && mapping = @domain.mappings.where(:source_path => /^\/#{params['path']}/).first
+        redirect_to mapping.target, :status => 301
         return
       elsif @domain.catch_all
         log_request(:status => 301, :redirected_to => @domain.catch_all)

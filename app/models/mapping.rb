@@ -2,7 +2,7 @@ require 'net/http'
 class Mapping
   include Mongoid::Document
   field :source_path, :type => String
-  field :target_path, :type => String
+  field :target, :type => String
 
   embedded_in :domain
 

@@ -41,3 +41,5 @@ Scenario: Manage an existing domain
   And I should see 'Mappings'
   When I click on the 'Mappings' link
   And I click on the 'Add a mapping' link
+  Then I should see a 'Source Path' field
+  And I should see a 'Target' field
