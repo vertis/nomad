@@ -15,7 +15,7 @@ Scenario: Should be redirected to the manage domains page if logged in
 Scenario: Create a new domain
   Given I am an existing user
   And I am logged in
-  When go to the manage domains page
+  When I go to the manage domains page
   And I click on the 'New Domain' link
   Then I should be on the new domain page
   When I enter 'domain1.test' into the 'Name' field

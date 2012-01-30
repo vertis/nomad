@@ -6,17 +6,17 @@ Feature: Sign up for an account
 @javascript
 Scenario: The home page
   Given I am a new user
-  When I am on the home page
+  When I go to the home page
   Then I should see 'nomad'
   And I should see 'Sign In'
-  And I should see 'Permanent Redirect'
+  And I should see 'Nomad'
   And I should see 'Get started now »'
-  And I should see 'Occassionally you'll want to move a website to a different domain and/or a different platform. Maybe you're defecting from Wordpress to Jekyll. nomad will help you setup permanent redirects for each of your pages to it's new home.'
+  And I should see 'Move a website to a new domain and have the traffic follow.'
   
 @javascript
 Scenario: Creating an account
   Given I am a new user
-  When I am on the home page
+  When I go to the home page
   And I click on the 'Get started now »' link
   Then I should be on the new user registrations page
   When I enter 'test@example.com' into the 'Email' field
