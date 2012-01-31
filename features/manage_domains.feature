@@ -32,7 +32,6 @@ Scenario: Create a mapping with valid details
   And I have setup a domain named 'domain1.test' with a catch all of 'http://www.blekko.com/'
   And I am logged in
   When I go to the manage domains page
-  Then I should see 'Manage'
   When I click on the 'Manage' link
   Then I should be on the manage domain page for 'domain1.test'
   And I should see 'Basic Details'
