@@ -44,17 +44,19 @@ end
 namespace :nginx do
   task :symlink_and_restart do
     require 'fileutils'
-    FileUtils.ln_sf "#{release_path}/config/deploy/noman_nginx.conf", "etc/nginx/sites-enabled/nomad.conf"
+    FileUtils.ln_sf "#{release_path}/config/deploy/noman_nginx.conf", "/etc/nginx/sites-enabled/nomad.conf"
     run "/etc/init.d/nginx restart"
   end
 end
 
 namespace :foreman do
-  task :symlink_and_restart do
-    run "foreman export inittab"
+  task :start do
+    run "cd #{release_path} && nohup bundle exec foreman start -D"
+    #run "cd #{release_path} && bundle exec foreman export inittab /etc/init.d/nomad -l /opt/apps/nomad/shared/log/ -u root"
+    #run "/etc/init.d/nomad restart"
   end
 end
 
 after "deploy", "rvm:trust_rvmrc"
-after "deploy", "foreman:symlink_and_restart"
+after "deploy", "foreman:start"
 after "deploy", "nginx:symlink_and_restart"
