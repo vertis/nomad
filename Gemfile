@@ -28,7 +28,7 @@ gem "capistrano"
 gem "capistrano-ext"
 gem "capistrano_colors"
 
-# Monitoring
+# Monitoring  
 gem 'newrelic_rpm'
 
 # Templating

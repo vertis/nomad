@@ -8,6 +8,9 @@ set :repository,  "git@github.com:vertis/nomad.git"
 
 set :scm, :git
 ssh_options[:forward_agent] = true
+
+ssh_options[:user_known_hosts_file] = ["/dev/null"]
+
 set :branch, "master"
 set :deploy_via, :remote_cache
 
@@ -43,7 +46,7 @@ end
 
 namespace :assets do
   task :precompile do
-    run "cd #{release_path} && rake assets:precompile"
+    #run "cd #{release_path} && rake assets:precompile"
   end
 end
 
@@ -67,7 +70,31 @@ namespace :unicorn do
   end
 end
 
+namespace :rvm do
+  task :create_gemset do
+    disable_rvm_shell do
+      run "source /usr/local/rvm/scripts/rvm && rvm use --create #{rvm_ruby_string}"
+    end
+  end
+end
+
+namespace :github do
+  task :trust_host do
+    run "ssh -o StrictHostKeyChecking=no git@github.com; true"
+  end
+end
+
+before "deploy:setup", "rvm:create_gemset"
+before "deploy:setup", "github:trust_host"
+
 after "deploy", "rvm:trust_rvmrc"
 after "deploy", "assets:precompile"
 after "deploy", "unicorn:copy_and_restart"
 after "deploy", "nginx:symlink_and_restart"
+
+def disable_rvm_shell(&block)
+  old_shell = self[:default_shell]
+  self[:default_shell] = nil
+  yield
+  self[:default_shell] = old_shell
+end
