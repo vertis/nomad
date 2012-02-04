@@ -23,12 +23,14 @@ nodes = {
   "nomad02" => "173.255.221.195"
 }
 
-# role :web, "173.230.157.250"                          # Your HTTP server, Apache/etc
-# role :app, "173.230.157.250"                          # This may be the same as your `Web` server
-# role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-# role :db,  "your slave db-server here"
-role :web, nodes[ENV['NODE']]
-role :app, nodes[ENV['NODE']]
+if ENV['NODE']
+  role :web, nodes[ENV['NODE']]
+  role :app, nodes[ENV['NODE']]
+else
+  role :web, *nodes.values
+  role :app, *nodes.values
+end
+  
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
