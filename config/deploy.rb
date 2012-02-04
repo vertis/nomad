@@ -88,7 +88,7 @@ before "deploy:setup", "rvm:create_gemset"
 before "deploy:setup", "github:trust_host"
 
 after "deploy", "rvm:trust_rvmrc"
-after "deploy", "assets:precompile"
+#after "deploy", "assets:precompile"
 after "deploy", "unicorn:copy_and_restart"
 after "deploy", "nginx:symlink_and_restart"
 
