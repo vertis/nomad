@@ -46,7 +46,7 @@ end
 
 namespace :assets do
   task :precompile do
-    #run "cd #{release_path} && rake assets:precompile"
+    run "cd #{release_path} && rake assets:precompile"
   end
 end
 
