@@ -28,6 +28,9 @@ gem "capistrano"
 gem "capistrano-ext"
 gem "capistrano_colors"
 
+# Monitoring
+gem 'newrelic_rpm'
+
 # Templating
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
