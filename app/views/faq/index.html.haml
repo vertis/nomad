@@ -1,0 +1,22 @@
+.page-header
+  %h1 Frequently Asked Questions
+.row
+  .span10
+    %h5 Q: How does the app work?
+    %p A: Nomad allows you to specify a domain and paths, and have all traffic
+    redirected to the new home. You will also need to change the DNS to point to Nomad.
+    
+    %h5 Q: Why would I want to use this service?
+    %p A: When you move to a new domain, old links stop working, and your content disappears from search engines. This service helps during the transition.
+  
+    %h5 Q: How can I point my domain at Nomad?
+    %p A: In order to point root domain (e.g. example.org) at Nomad, add '96.126.99.63' as an A record. If you are pointing a subdomain (e.g. www.example.org) at Nomad, point a CNAME record to proxy.nomad.cx.
+    
+    %h5 Q: Who are you?
+    %p A: My name is Luke Chadwick. I'm a Ruby Developer from Melbourne Australia. Some links you might be interested in:
+      %ul
+        %li= link_to "Twitter", "http://twitter.com/vertis"
+        %li= link_to "Github", "https://github.com/vertis"
+        %li= link_to "My Blog", "http://vertis.github.com/"
+        %li= link_to "My Email (Obfusticated)", "luke -dot- a -dot- chadwick -at- gmail -dot- com"
+    

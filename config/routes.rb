@@ -1,4 +1,7 @@
 Nomad::Application.routes.draw do
+  get "terms" => "terms#index"
+  get "faq" => 'faq#index'
+
   get "welcome/index"
 
   devise_for :users
