@@ -3,7 +3,7 @@ set -e
 set -x
 
 # Feel free to change any of the following variables for your app:
-TIMEOUT=${TIMEOUT-60}
+TIMEOUT=30
 APP_ROOT=/opt/apps/nomad/current
 PID=/opt/apps/nomad/shared/pids/unicorn.pid
 CMD="bundle exec unicorn_rails -c $APP_ROOT/config/unicorn.rb -E production -D"
@@ -42,7 +42,7 @@ restart|reload)
   $CMD
   ;;
 upgrade)
-  if sig USR2 && sleep 2 && sig 0 && oldsig QUIT
+  if sig USR2 && sleep 10 && sig 0 && oldsig QUIT
   then
     n=$TIMEOUT
     while test -s $old_pid && test $n -ge 0
