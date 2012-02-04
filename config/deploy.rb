@@ -41,10 +41,17 @@ namespace :rvm do
   end
 end
 
+namespace :assets do
+  task :precompile do
+    run "cd #{release_path} && rake assets:precompile"
+  end
+end
+
+
 namespace :nginx do
   task :symlink_and_restart do
     require 'fileutils'
-    FileUtils.ln_sf "#{release_path}/config/deploy/nomad_nginx.conf", "/etc/nginx/sites-enabled/nomad.conf"
+    run "ln -sf #{release_path}/config/deploy/nomad_nginx.conf /etc/nginx/sites-enabled/nomad.conf"
     run "/etc/init.d/nginx restart"
   end
 end
@@ -53,11 +60,14 @@ namespace :unicorn do
   task :copy_and_restart do
     #run "cd #{release_path} && nohup bundle exec foreman start -D"
     #run "cd #{release_path} && bundle exec foreman export inittab /etc/init.d/nomad -l /opt/apps/nomad/shared/log/ -u root"
-    FileUtils.cp_f("#{release_path}/config/deploy/unicorn.sh", "/etc/init.d/nomad")
+    require 'fileutils'
+    #FileUtils.cp("#{release_path}/config/deploy/unicorn.sh", "/etc/init.d/nomad")
+    run "cp -f #{release_path}/config/deploy/unicorn.sh /etc/init.d/nomad"
     run "/etc/init.d/nomad restart"
   end
 end
 
 after "deploy", "rvm:trust_rvmrc"
+after "deploy", "assets:precompile"
 after "deploy", "unicorn:copy_and_restart"
 after "deploy", "nginx:symlink_and_restart"

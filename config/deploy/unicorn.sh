@@ -5,7 +5,7 @@ set -e
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/opt/apps/nomad/current
 PID=/opt/apps/nomad/shared/pids/unicorn.pid
-CMD="cd $APP_ROOT && bundle exec unicorn --config-file $APP_ROOT/config/unicorn.rb --env production --daemonize $APP_ROOT/config.ru"
+CMD="cd $APP_ROOT && bundle exec unicorn_rails -c $APP_ROOT/config/unicorn.rb -E production -D"
 
 action="$1"
 set -u
