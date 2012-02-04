@@ -30,6 +30,7 @@ gem "capistrano_colors"
 
 # Monitoring  
 gem 'newrelic_rpm'
+gem 'exceptional'
 
 # Templating
 gem "haml", ">= 3.0.0"
