@@ -63,7 +63,7 @@ namespace :nginx do
   task :symlink_and_restart do
     require 'fileutils'
     run "ln -sf #{release_path}/config/deploy/nomad_nginx.conf /etc/nginx/sites-enabled/nomad.conf"
-    run "/etc/init.d/nginx restart"
+    run "/etc/init.d/nginx relaod"
   end
 end
 
@@ -98,7 +98,7 @@ before "deploy:setup", "github:trust_host"
 after "deploy", "rvm:trust_rvmrc"
 #after "deploy", "assets:precompile"
 after "deploy", "unicorn:copy_and_restart"
-after "deploy", "nginx:symlink_and_restart"
+after "deploy", "nginx:symlink_and_reload"
 
 def disable_rvm_shell(&block)
   old_shell = self[:default_shell]
