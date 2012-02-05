@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-set -x
+#set -x
 
 # Feel free to change any of the following variables for your app:
 TIMEOUT=30

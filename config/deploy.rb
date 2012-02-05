@@ -60,7 +60,7 @@ end
 
 
 namespace :nginx do
-  task :symlink_and_restart do
+  task :symlink_and_reload do
     require 'fileutils'
     run "ln -sf #{release_path}/config/deploy/nomad_nginx.conf /etc/nginx/sites-enabled/nomad.conf"
     run "/etc/init.d/nginx relaod"
