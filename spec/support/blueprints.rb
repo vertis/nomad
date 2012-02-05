@@ -23,7 +23,3 @@ end
 User.blueprint do
   # Attributes here
 end
-
-Manage::Domain.blueprint do
-  # Attributes here
-end
