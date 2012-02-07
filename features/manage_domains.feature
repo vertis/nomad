@@ -12,7 +12,7 @@ Scenario: Should be redirected to the manage domains page if logged in
   Then I should be on the manage domains page
 
 @javascript
-Scenario: Create a new domain
+Scenario: Create a new domain with valid details
   Given I am an existing user
   And I am logged in
   When I go to the manage domains page
@@ -25,46 +25,30 @@ Scenario: Create a new domain
   And I should see 'domain1.test'
   And I should see 'http://www.blekko.com'
   And I should see 'Domain added successfully'
-  
-@javascript
-Scenario: Create a mapping with valid details
-  Given I am an existing user
-  And I have setup a domain named 'domain1.test' with a catch all of 'http://www.blekko.com/'
-  And I am logged in
-  When I go to the manage domains page
-  When I click on the 'Manage' link
-  Then I should be on the manage domain page for 'domain1.test'
-  And I should see 'Basic Details'
-  And I should see 'domain1.test' in the 'Name' field
-  And I should see 'http://www.blekko.com/' in the 'Catch all' field
-  And I should see 'Mappings'
-  When I click on the 'Mappings' link
-  And I click on the 'Add a mapping' link
-  And I enter '/example' into the 'Source path' field
-  And I enter 'http://www.blekko.com/ws/example' into the 'Target' field
-  And I click the 'Create Mapping' button
-  Then I should be on the manage domain page for 'domain1.test'
-  When I click on the 'Mappings' link
-  And I should see '/example'
-  And I should see 'http://www.blekko.com/ws/example'
 
 @javascript
-Scenario: Edit a mapping with valid details
+Scenario: Create a new domain with missing details
   Given I am an existing user
-  And I have setup a domain named 'domain1.test' with a catch all of 'http://www.blekko.com/'
-  And I have setup a mapping for the domain named 'domain1.test' with a source of '/test' and a target of 'http://blekko.com/ws/test'
   And I am logged in
-  When I go to the manage domain page for 'domain1.test'
-  And I click on the 'Mappings' link
-  Then I should see '/test'
-  And I should see 'http://blekko.com/ws/test'
-  When I click on the 'Edit' link
-  Then I should see '/test' in the 'Source path' field
-  And I should see 'http://blekko.com/ws/test' in the 'Target' field
-  And I enter '/servers' into the 'Source path' field
-  And I enter 'http://blekko.com/ws/servers' into the 'Target' field
-  And I click the 'Update Mapping' button
-  Then I should be on the manage domain page for 'domain1.test'
-  When I click on the 'Mappings' link
-  And I should see '/servers'
-  And I should see 'http://blekko.com/ws/servers'
+  When I go to the manage domains page
+  And I click on the 'New Domain' link
+  Then I should be on the new domain page
+  When I enter '' into the 'Name' field
+  And I enter '' into the 'Catch all' field
+  And I click the 'Create Domain' button
+  Then I should see 'Please enter the source domain.'
+  And I should see 'Please enter the default redirect target here.'
+
+@javascript
+Scenario: Create a new domain with incorrectly formatted details
+  Given I am an existing user
+  And I am logged in
+  When I go to the manage domains page
+  And I click on the 'New Domain' link
+  Then I should be on the new domain page
+  When I enter 'http://blekko.com' into the 'Name' field
+  And I enter 'www.blekko.com' into the 'Catch all' field
+  And I click the 'Create Domain' button
+  Then I should see 'Your source domain shouldn't have 'http://' or 'https://' at the start of the url.'
+  And I should see 'Please put either 'http://' or 'https://' at the start of the url.'
+

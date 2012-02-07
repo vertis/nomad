@@ -44,15 +44,15 @@ class Manage::DomainsController < ApplicationController
   def create
     domain = params[:domain]
     #domain[:alternative_names] = domain[:alternative_names].split(',').map(&:strip)
-    @manage_domain = current_user.domains.new(domain)
-    Rails.logger.debug(@manage_domain.inspect)
+    @domain = current_user.domains.new(domain)
+    Rails.logger.debug(@domain.inspect)
     respond_to do |format|
-      if @manage_domain.save
+      if @domain.save
         format.html { redirect_to(manage_domains_path, :notice => 'Domain added successfully.') }
-        format.xml  { render :xml => @manage_domain, :status => :created, :location => @manage_domain }
+        format.xml  { render :xml => @domain, :status => :created, :location => @domain }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @manage_domain.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @domain.errors, :status => :unprocessable_entity }
       end
     end
   end
