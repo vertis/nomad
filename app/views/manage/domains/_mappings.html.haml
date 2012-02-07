@@ -12,7 +12,7 @@
         %td= mapping.source_path
         %td= mapping.target
         %td{:style => 'width: 40px'}
-          = link_to image_tag('edit.png'), '#mapping-#{mapping.id}', :"data-toggle" => "modal", :"data-backdrop" => "static"
+          = link_to image_tag('edit.png'), "#mapping-#{mapping.id}", :"data-toggle" => "modal", :"data-backdrop" => "static"
           .div{:id => "mapping-#{mapping.id}", :class => "modal hide fade in", :style => "display: none; "}
             = simple_form_for([:manage, @domain, mapping], :wrapper => :inline) do |f|
               .modal-header
