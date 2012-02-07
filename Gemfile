@@ -36,8 +36,7 @@ gem 'exceptional'
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
 
-gem 'nifty-generators'
-gem 'twitter-bootstrap-rails', "~> 1.4.3"
+gem 'less-rails-bootstrap'
   
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
