@@ -1,9 +1,9 @@
 %h1 Manage Domain
-%ul{:class => 'tabs', :"data-tabs" => 'tabs'}
+%ul{:class => 'tabs'}
   %li{:class => 'active'}
-    %a{:href => '#basic'} Basic Details
+    %a{:href => '#basic', :"data-toggle" => 'tab'} Basic Details
   %li
-    %a{:href => '#mappings'} Mappings
+    %a{:href => '#mappings', :"data-toggle" => 'tab'} Mappings
   
 
 .tab-content
@@ -12,3 +12,11 @@
   .tab-pane{:id => 'mappings'}
     = render 'mappings'
 
+:javascript
+  $(function () {
+    if(window.location.hash) {
+      $('.tabs a[href="'+window.location.hash+'"]').tab('show');
+    } else {
+      $('.tabs a[href="#basic"]').tab('show');
+    }
+  });
