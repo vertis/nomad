@@ -14,7 +14,7 @@
         %td{:style => 'width: 40px'}
           = link_to image_tag('edit.png'), "#mapping-#{mapping.id}", :"data-toggle" => "modal", :"data-backdrop" => "static"
           .div{:id => "mapping-#{mapping.id}", :class => "modal hide fade in", :style => "display: none; "}
-            = simple_form_for([:manage, @domain, mapping], :wrapper => :inline) do |f|
+            = simple_form_for([:manage, @domain, mapping], :remote => true, :wrapper => :inline, ) do |f|
               .modal-header
                 %a.close{:href => "#"} ×
                 %h3 Edit mapping
@@ -26,7 +26,7 @@
           = link_to image_tag('delete.png'), manage_domain_mapping_path(@domain, mapping), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this mapping?'
 
 #new-mapping.modal.hide.fade.in{:style => "display: none; "}
-  = simple_form_for([:manage, @domain, @domain.mappings.new], :wrapper => :inline) do |f|
+  = simple_form_for([:manage, @domain, @domain.mappings.new], :remote => true, :wrapper => :inline) do |f|
     .modal-header
       %a.close{:href => "#"} ×
       %h3 Add new mapping

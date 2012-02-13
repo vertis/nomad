@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+unless User.first
+  @user = User.create(:email => 'luke.a.chadwick@gmail.com', :password => 'password', :password_confirmation => 'password')
+  @domain = @user.domains.create(:name => 'domain1.test', :catch_all => 'http://blekko.com')
+  @domain.mappings.create(:source_path => '/servers.html', :target => 'http://blekko.com/ws/servers')
+end

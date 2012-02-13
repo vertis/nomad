@@ -6,3 +6,4 @@ bin
 .idea
 .sass-cache
 .DS_Store
+db/mongo*

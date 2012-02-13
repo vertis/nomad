@@ -1,20 +1,20 @@
 <% unless flash[:notice].blank? %>
   <div class="alert-message info">
     <%= content_tag :span, flash[:notice] %>
-    <a class="close">&times;</a>
+    <a  data-dismiss="alert" class="close">&times;</a>
   </div>
 <% end %>
 
 <% unless flash[:error].blank? %>
   <div class="alert-message error">
     <%= content_tag :span, flash[:error] %>
-    <a class="close">&times;</a>
+    <a  data-dismiss="alert" class="close">&times;</a>
   </div>
 <% end %>
 
 <% unless flash[:alert].blank? %>
   <div class="alert-message warning">
     <%= content_tag :span, flash[:alert] %>
-    <a class="close">&times;</a>
+    <a data-dismiss="alert" class="close">&times;</a>
   </div>
 <% end %>

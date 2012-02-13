@@ -2,7 +2,7 @@
 %ul.nav.secondary-nav
   - if user_signed_in?
     %li.dropdown
-      %a{:href => "#", :class => 'dropdown-toggle'}
+      %a{:href => "#", :class => 'dropdown-toggle', :"data-toggle" => 'dropdown'}
         = current_user.email
       %ul.dropdown-menu
         %li
