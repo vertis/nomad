@@ -6,5 +6,9 @@
 
 $(document).ready(function(){
   /* Your javascripts goes here... */
+  $(document).on('ajax:error', function(data) {
+    alert("Error");
+    alert(data)
+  });
 });
   
