@@ -28,7 +28,7 @@
 #new-mapping.modal.hide.fade.in{:style => "display: none; "}
   = simple_form_for([:manage, @domain, @domain.mappings.new], :remote => true, :wrapper => :inline) do |f|
     .modal-header
-      %a.close{:href => "#"} ×
+      %a.close{:href => "#",  :"data-dismiss" => "modal"} ×
       %h3 Add new mapping
     .modal-body
       = f.input :source_path, :input_html => { :class => "span6" }, :placeholder => "/example"

@@ -15,7 +15,8 @@
             %td= domain.name
             %td= domain.catch_all
             %td
-              = link_to image_tag('manage.png'), manage_domain_path(domain)
-              = link_to image_tag('delete.png'), manage_domain_path(domain), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this domain?'
+              .pull-right
+                = link_to image_tag('manage.png'), manage_domain_path(domain)
+                = link_to image_tag('delete.png'), manage_domain_path(domain), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this domain?'
 
 
