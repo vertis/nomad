@@ -2,9 +2,8 @@ class Manage::Domains::MappingsController < ApplicationController
   def create
     @domain = current_user.domains.find(params[:domain_id])
     @mapping = @domain.mappings.new(params[:mapping])
-    Rails.logger.debug(@domain.inspect)
     respond_to do |format|
-      if false #@mapping.save
+      if @mapping.save
         format.html { redirect_to(manage_domain_url(@domain), :notice => 'Mapping added successfully.') }
       else
         format.js { render :json => "[]" }

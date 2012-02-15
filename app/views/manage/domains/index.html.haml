@@ -10,7 +10,7 @@
           %th Catch all
           %th
 
-        - @manage_domains.each do |domain|
+        - @domains.each do |domain|
           %tr
             %td= domain.name
             %td= domain.catch_all

@@ -3,11 +3,11 @@ class Manage::DomainsController < ApplicationController
   # GET /manage/domains
   # GET /manage/domains.xml
   def index
-    @manage_domains = current_user.domains.all
+    @domains = current_user.domains.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @manage_domains }
+      format.xml  { render :xml => @domains }
     end
   end
 
@@ -45,7 +45,6 @@ class Manage::DomainsController < ApplicationController
     domain = params[:domain]
     #domain[:alternative_names] = domain[:alternative_names].split(',').map(&:strip)
     @domain = current_user.domains.new(domain)
-    Rails.logger.debug(@domain.inspect)
     respond_to do |format|
       if @domain.save
         format.html { redirect_to(manage_domains_path, :notice => 'Domain added successfully.') }
@@ -60,17 +59,17 @@ class Manage::DomainsController < ApplicationController
   # PUT /manage/domains/1
   # PUT /manage/domains/1.xml
   def update
-    @manage_domain = current_user.domains.find(params[:id])
+    @domain = current_user.domains.find(params[:id])
 
     respond_to do |format|
       domain = params[:domain]
-      domain[:alternative_names] = domain[:alternative_names].split(',').map(&:strip)
-      if @manage_domain.update_attributes(domain)
-        format.html { redirect_to([:manage, @manage_domain], :notice => 'Domain was successfully updated.') }
+      #domain[:alternative_names] = domain[:alternative_names].split(',').map(&:strip)
+      if @domain.update_attributes(domain)
+        format.html { redirect_to([:manage, @domain], :notice => 'Domain was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @manage_domain.errors, :status => :unprocessable_entity }
+        format.html { render :action => "show" }
+        format.xml  { render :xml => @domain.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -78,8 +77,8 @@ class Manage::DomainsController < ApplicationController
   # DELETE /manage/domains/1
   # DELETE /manage/domains/1.xml
   def destroy
-    @manage_domain = current_user.domains.find(params[:id])
-    @manage_domain.destroy
+    @domain = current_user.domains.find(params[:id])
+    @domain.destroy
 
     respond_to do |format|
       format.html { redirect_to(manage_domains_url) }

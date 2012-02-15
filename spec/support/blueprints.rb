@@ -1,4 +1,5 @@
-require 'machinist/active_record'
+#require 'machinist/active_record'
+require 'machinist/mongoid'
 
 # Add your blueprints here.
 #
@@ -22,4 +23,7 @@ end
 
 User.blueprint do
   # Attributes here
+  email { "user#{sn}@example.com" }
+  password { "password" }
+  password_confirmation { "password" }
 end

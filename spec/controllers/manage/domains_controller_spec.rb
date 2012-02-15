@@ -7,65 +7,86 @@ require 'spec_helper'
 describe Manage::DomainsController do
 
   def mock_domain(stubs={})
-    @mock_domain ||= mock_model(Manage::Domain, stubs).as_null_object
+    @mock_domain ||= mock_model(Domain, stubs).as_null_object
   end
 
   describe "GET index" do
-    it "assigns all manage_domains as @manage_domains" do
-      Manage::Domain.stub(:all) { [mock_domain] }
+    before(:each) do
+      @user = User.make!
+      sign_in @user
+      @mock_domains = mock("domains")
+      controller.current_user.should_receive(:domains).and_return(@mock_domains)
+    end
+
+    it "assigns all domains as @domains" do
+      @mock_domains.should_receive(:all).and_return([mock_domain])
       get :index
-      assigns(:manage_domains).should eq([mock_domain])
+      assigns(:domains).should eq([mock_domain])
     end
   end
 
   describe "GET show" do
+    before(:each) do
+      @user = User.make!
+      sign_in @user
+      @mock_domains = mock("domains")
+      controller.current_user.should_receive(:domains).and_return(@mock_domains)
+    end
+
     it "assigns the requested domain as @domain" do
-      Manage::Domain.stub(:find).with("37") { mock_domain }
+      @mock_domains.should_receive(:find).with("37").and_return(mock_domain)
       get :show, :id => "37"
       assigns(:domain).should be(mock_domain)
     end
   end
 
   describe "GET new" do
+    before(:each) do
+      @user = User.make!
+      sign_in @user
+      @mock_domains = mock("domains")
+      controller.current_user.should_receive(:domains).and_return(@mock_domains)
+    end
+
     it "assigns a new domain as @domain" do
-      Manage::Domain.stub(:new) { mock_domain }
+      @mock_domains.should_receive(:new).and_return(mock_domain)
       get :new
       assigns(:domain).should be(mock_domain)
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested domain as @domain" do
-      Manage::Domain.stub(:find).with("37") { mock_domain }
-      get :edit, :id => "37"
-      assigns(:domain).should be(mock_domain)
-    end
-  end
-
   describe "POST create" do
+    before(:each) do
+      @user = User.make!
+      sign_in @user
+      @mock_domains = mock("domains")
+      controller.current_user.should_receive(:domains).and_return(@mock_domains)
+    end
+
     describe "with valid params" do
       it "assigns a newly created domain as @domain" do
-        Manage::Domain.stub(:new).with({'these' => 'params'}) { mock_domain(:save => true) }
+        @mock_domains.should_receive(:new).and_return(mock_domain(:save => true))
+        Domain.stub(:new).with({'these' => 'params'}) {  }
         post :create, :domain => {'these' => 'params'}
         assigns(:domain).should be(mock_domain)
       end
 
       it "redirects to the created domain" do
-        Manage::Domain.stub(:new) { mock_domain(:save => true) }
+        @mock_domains.should_receive(:new).and_return(mock_domain(:save => true))
         post :create, :domain => {}
-        response.should redirect_to(manage_domain_url(mock_domain))
+        response.should redirect_to(manage_domains_url)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved domain as @domain" do
-        Manage::Domain.stub(:new).with({'these' => 'params'}) { mock_domain(:save => false) }
+        @mock_domains.should_receive(:new).with({'these' => 'params'}).and_return(mock_domain(:save => false))
         post :create, :domain => {'these' => 'params'}
         assigns(:domain).should be(mock_domain)
       end
 
       it "re-renders the 'new' template" do
-        Manage::Domain.stub(:new) { mock_domain(:save => false) }
+        @mock_domains.should_receive(:new).with({}).and_return(mock_domain(:save => false))
         post :create, :domain => {}
         response.should render_template("new")
       end
@@ -73,21 +94,29 @@ describe Manage::DomainsController do
   end
 
   describe "PUT update" do
+    before(:each) do
+      @user = User.make!
+      sign_in @user
+      @mock_domains = mock("domains")
+      controller.current_user.should_receive(:domains).and_return(@mock_domains)
+    end
+
+
     describe "with valid params" do
       it "updates the requested domain" do
-        Manage::Domain.stub(:find).with("37") { mock_domain }
-        mock_manage_domain.should_receive(:update_attributes).with({'these' => 'params'})
+        @mock_domains.should_receive(:find).with("37").and_return(mock_domain)
+        mock_domain.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :domain => {'these' => 'params'}
       end
 
       it "assigns the requested domain as @domain" do
-        Manage::Domain.stub(:find) { mock_domain(:update_attributes => true) }
+        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => true))
         put :update, :id => "1"
         assigns(:domain).should be(mock_domain)
       end
 
       it "redirects to the domain" do
-        Manage::Domain.stub(:find) { mock_domain(:update_attributes => true) }
+        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => true))
         put :update, :id => "1"
         response.should redirect_to(manage_domain_url(mock_domain))
       end
@@ -95,28 +124,35 @@ describe Manage::DomainsController do
 
     describe "with invalid params" do
       it "assigns the domain as @domain" do
-        Manage::Domain.stub(:find) { mock_domain(:update_attributes => false) }
+        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => false))
         put :update, :id => "1"
         assigns(:domain).should be(mock_domain)
       end
 
       it "re-renders the 'edit' template" do
-        Manage::Domain.stub(:find) { mock_domain(:update_attributes => false) }
+        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => false))
         put :update, :id => "1"
-        response.should render_template("edit")
+        response.should render_template("show")
       end
     end
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      @user = User.make!
+      sign_in @user
+      @mock_domains = mock("domains")
+      controller.current_user.should_receive(:domains).and_return(@mock_domains)
+    end
+
     it "destroys the requested domain" do
-      Manage::Domain.stub(:find).with("37") { mock_domain }
-      mock_manage_domain.should_receive(:destroy)
+      @mock_domains.should_receive(:find).with("37").and_return(mock_domain)
+      mock_domain.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
-    it "redirects to the manage_domains list" do
-      Manage::Domain.stub(:find) { mock_domain }
+    it "redirects to the domains list" do
+      @mock_domains.should_receive(:find).with("1").and_return(mock_domain)
       delete :destroy, :id => "1"
       response.should redirect_to(manage_domains_url)
     end

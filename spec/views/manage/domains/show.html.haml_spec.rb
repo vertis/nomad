@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "manage_domains/show.html.haml" do
+describe "manage/domains/show.html.haml" do
   before(:each) do
-    @domain = assign(:domain, stub_model(Manage::Domain,
+    @domain = assign(:domain, stub_model(Domain,
       :name => "Name",
       :catch_all => "Catch All",
-      :alternative_names => ""
     ))
+    @mappings = []
   end
 
   it "renders attributes in <p>" do
