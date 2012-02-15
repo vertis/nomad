@@ -45,7 +45,7 @@ group :test do
 
   gem 'rspec-rails', '>= 2.0.1'
   #gem 'mongoid-rspec'
-  gem 'rcov'
+  gem 'simplecov', :require => false
 
   gem 'database_cleaner'
   gem 'capybara', '>= 1.1.2'

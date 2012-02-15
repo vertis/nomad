@@ -7,3 +7,4 @@ bin
 .sass-cache
 .DS_Store
 db/mongo*
+coverage
