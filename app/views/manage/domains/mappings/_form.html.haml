@@ -1,0 +1,4 @@
+= simple_form_for([:manage, @domain, @mapping], :wrapper => :inline, ) do |f|
+  = f.input :source_path, :input_html => { :class => "span6" }, :placeholder => "/example"
+  = f.input :target, :input_html => { :class => "span6" }, :placeholder => 'http://www.blekko.com/ws/example'
+  = f.button :submit, :class => 'primary'

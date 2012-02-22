@@ -1,4 +1,10 @@
 class Manage::Domains::MappingsController < ApplicationController
+
+  def new
+    @domain = current_user.domains.find(params[:domain_id])
+    @mapping = @domain.mappings.new
+  end
+
   def create
     @domain = current_user.domains.find(params[:domain_id])
     @mapping = @domain.mappings.new(params[:mapping])
@@ -10,6 +16,11 @@ class Manage::Domains::MappingsController < ApplicationController
         format.html { render :action => "new" }
       end
     end
+  end
+
+  def edit
+    @domain = current_user.domains.find(params[:domain_id])
+    @mapping = @domain.mappings.find(params[:id])
   end
 
   def update

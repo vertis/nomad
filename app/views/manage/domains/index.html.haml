@@ -1,15 +1,16 @@
 .content
+  .page-header
+    .options.pull-right
+      = link_to 'New Domain', new_manage_domain_path, :class => 'btn primary'
+    %h1 Domains
   .row
-    .span16
-      .options{:style => 'text-align:right; margin-bottom:20px'}
-        = link_to 'New Domain', new_manage_domain_path, :class => 'btn primary'
-      %h1 Domains
-      %table
-        %tr
+    .span12
+      %table.table.table-striped.table-bordered{:id => 'domains'}
+        %thead
           %th Name
           %th Catch all
           %th
-
+        %tbody
         - @domains.each do |domain|
           %tr
             %td= domain.name
