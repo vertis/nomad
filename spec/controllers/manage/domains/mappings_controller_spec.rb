@@ -13,20 +13,48 @@ describe Manage::Domains::MappingsController do
     @mock_domain.should_receive(:mappings).and_return(@mock_mappings)
   end
 
-  describe "GET 'create'" do
+  describe "GET 'new'" do
+    it "should assign a domain" do
+      @mock_mappings.should_receive(:new).and_return(@mock_mapping)
+      get :new, :domain_id => "37"
+      assigns[:domain].should == @mock_domain
+    end
+    
+    it "should assign a mapping" do
+      @mock_mappings.should_receive(:new).and_return(@mock_mapping)
+      get :new, :domain_id => "37"
+      assigns[:mapping].should == @mock_mapping
+    end
+  end
+  
+  describe "POST 'create'" do
     it "should be successful" do
       @mock_mappings.should_receive(:new).and_return(@mock_mapping)
       @mock_mapping.should_receive(:save).and_return(true)
-      get :create, :domain_id => "37"
+      post :create, :domain_id => "37"
       response.should be_redirect
     end
   end
+  
+  describe "GET 'edit'" do
+    it "should assign a domain" do
+      @mock_mappings.should_receive(:find).with("1").and_return(@mock_mapping)
+      get :edit, :domain_id => "37", :id => "1"
+      assigns[:domain].should == @mock_domain
+    end
+    
+    it "should assign a mapping" do
+      @mock_mappings.should_receive(:find).with("1").and_return(@mock_mapping)
+      get :edit, :domain_id => "37", :id => "1"
+      assigns[:mapping].should == @mock_mapping
+    end
+  end
 
-  describe "GET 'update'" do
+  describe "PUT 'update'" do
     it "should be successful" do
       @mock_mappings.should_receive(:find).with("1").and_return(@mock_mapping)
       @mock_mapping.should_receive(:update_attributes).and_return(true)
-      get :update, :domain_id => "37", :id => "1"
+      put :update, :domain_id => "37", :id => "1"
       response.should be_redirect
     end
   end
