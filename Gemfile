@@ -40,6 +40,9 @@ gem 'less-rails-bootstrap'
   
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
+# HTTP
+gem 'httparty'
+
 group :test do
   gem 'machinist_mongo', :require => 'machinist/mongoid', :git => 'http://github.com/nmerouze/machinist_mongo.git', :branch => 'machinist2'
 
