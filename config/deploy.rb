@@ -54,7 +54,7 @@ end
 
 namespace :assets do
   task :precompile do
-    run "cd #{release_path} && rake assets:precompile"
+    #run "cd #{release_path} && rake assets:precompile"
   end
 end
 
@@ -63,7 +63,7 @@ namespace :nginx do
   task :symlink_and_reload do
     require 'fileutils'
     run "ln -sf #{release_path}/config/deploy/nomad_nginx.conf /etc/nginx/sites-enabled/nomad.conf"
-    run "/etc/init.d/nginx relaod"
+    run "/etc/init.d/nginx reload"
   end
 end
 
