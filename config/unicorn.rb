@@ -1,18 +1,27 @@
+APP_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
+
+if ENV['MY_RUBY_HOME'] && ENV['MY_RUBY_HOME'].include?('rvm')
+  begin
+    rvm_path = File.dirname(File.dirname(ENV['MY_RUBY_HOME']))
+    rvm_lib_path = File.join(rvm_path, 'lib')
+    $LOAD_PATH.unshift rvm_lib_path
+    require 'rvm'
+    RVM.use_from_path! APP_ROOT
+  rescue LoadError
+    raise "RVM ruby lib is currently unavailable."
+  end
+end
+
+ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
+require 'bundler/setup'
+
 worker_processes 4
-
-# Since Unicorn is never exposed to outside clients, it does not need to
-# run on the standard HTTP port (80), there is no reason to start Unicorn
-# as root unless it's from system init scripts.
-# If running the master process as root and the workers as an unprivileged
-# user, do this to switch euid/egid in the workers (also chowns logs):
-# user "unprivileged_user", "unprivileged_group"
-
-# Help ensure your application will always spawn in the symlinked
-# "current" directory that Capistrano sets up.
 working_directory "/opt/apps/nomad/current" # available in 0.94.0+
 
-# listen on both a Unix domain socket and a TCP port,
-# we use a shorter backlog for quicker failover when busy
+preload_app true
+
+timeout 30
+
 listen "/tmp/nomad_unicorn.sock", :backlog => 64
 listen 8080, :tcp_nopush => true
 
