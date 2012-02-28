@@ -39,16 +39,56 @@ class RedirectsController < ApplicationController
       query["h"]["site_id"]="4f4bf56dcb25bc56ca000097"
       query["h"]["resource"]=headers['REQUEST_URI']
       query["h"]["referrer"]=headers['HTTP_REFERRER']
-      query["h"]["title"]="N/A"
+      query["h"]["title"]="301 Redirect"
       query["h"]["user_agent"]=headers['HTTP_USER_AGENT']
-      query["h"]["unique_hour"]=1
-      query["h"]["unique_day"]=1
-      query["h"]["unique_month"]=0
-      query["h"]["unique_year"]=0
+      query["h"]["unique"]=unique
+      query["h"]["unique_hour"]=unique_hour
+      query["h"]["unique_day"]=unique_day
+      query["h"]["unique_month"]=unique_month
+      query["h"]["unique_year"]=unique_year
       query["h"]["screenx"]=0
       query["h"]["browserx"]=0
       query["h"]["browsery"]=0
       query["timestamp"]=(Time.now.to_i*1000)
-      HTTParty.get('http://secure.gaug.es/track.gif', :query => query, :headers => {'X-Forwarded-For' => '174.129.66.63', 'X-Real-IP' => '174.129.66.63', 'Remote-Addr' => '174.129.66.63'})
+
+      ip = headers['X_FORWARDED_FOR'] || headers['REMOTE_ADDR']
+
+      HTTParty.get('http://secure.gaug.es/track.gif', :query => query, :headers => {'X-Forwarded-For' => ip, 'X-Real-IP' => ip, 'Remote-Addr' => ip})
+
+      set_cookies
+    end
+
+    def set_cookies
+      cookies[:_gauges_cookie] = { :value => 1, :expires => 1.day.from_now }
+      cookies[:_gauges_unique_hour] = { :value => 1, :expires => 1.hour.from_now } unless cookies[:_gauges_unique_hour]
+      cookies[:_gauges_unique_day] = { :value => 1, :expires => 1.day.from_now } unless cookies[:_gauges_unique_day]
+      cookies[:_gauges_unique_month] = { :value => 1, :expires => 1.month.from_now } unless cookies[:_gauges_unique_month]
+      cookies[:_gauges_unique_year] = { :value => 1, :expires => 1.year.from_now } unless cookies[:_gauges_unique_year]
+      cookies[:_gauges_unique] = { :value => 1, :expires => 10.years.from_now } unless cookies[:_gauges_unique]
+    end
+
+    def unique
+      return 0 unless cookies[:_gauges_cookie]
+      return cookies[:_gauges_unique] ? 0 : 1
+    end
+
+    def unique_hour
+      return 0 unless cookies[:_gauges_cookie]
+      return cookies[:_gauges_unique_hour] ? 0 : 1
+    end
+
+    def unique_day
+      return 0 unless cookies[:_gauges_cookie]
+      return cookies[:_gauges_unique_day] ? 0 : 1
+    end
+
+    def unique_month
+      return 0 unless cookies[:_gauges_cookie]
+      return cookies[:_gauges_unique_month] ? 0 : 1
+    end
+
+    def unique_year
+      return 0 unless cookies[:_gauges_cookie]
+      return cookies[:_gauges_unique_year] ? 0 : 1
     end
 end
