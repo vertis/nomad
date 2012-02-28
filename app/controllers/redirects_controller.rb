@@ -34,6 +34,7 @@ class RedirectsController < ApplicationController
     end
     
     def track
+      require 'httparty'
       headers = request.headers
       query = {"h" => {}}
       query["h"]["site_id"]="4f4bf56dcb25bc56ca000097"

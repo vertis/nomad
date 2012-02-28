@@ -1,6 +1,8 @@
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require "rvm/capistrano"                  # Load RVM's capistrano plugin.
 set :rvm_ruby_string, '1.9.3@nomad'       # Or whatever env you want it to run in.
+set :bundle_flags, '--deployment'
+set :bundle_cmd, 'rvm current && bundle'
 require "bundler/capistrano"
 
 set :application, "nomad"
@@ -73,7 +75,7 @@ namespace :unicorn do
     #run "cd #{release_path} && bundle exec foreman export inittab /etc/init.d/nomad -l /opt/apps/nomad/shared/log/ -u root"
     require 'fileutils'
     #FileUtils.cp("#{release_path}/config/deploy/unicorn.sh", "/etc/init.d/nomad")
-    run "cp -f #{release_path}/config/deploy/unicorn.sh /etc/init.d/nomad"
+    run "cp -f #{current_path}/config/deploy/unicorn.sh /etc/init.d/nomad"
     run "/etc/init.d/nomad upgrade"
   end
 end
