@@ -52,7 +52,8 @@ class RedirectsController < ApplicationController
       query["timestamp"]=(Time.now.to_i*1000)
 
       ip = headers['X_FORWARDED_FOR'] || headers['REMOTE_ADDR']
-
+      Rails.logger.debug("IP: #{ip}")
+      Rails.logger.debug("Query: #{query}")
       HTTParty.get('http://secure.gaug.es/track.gif', :query => query, :headers => {'X-Forwarded-For' => ip, 'X-Real-IP' => ip, 'Remote-Addr' => ip})
 
       set_cookies
