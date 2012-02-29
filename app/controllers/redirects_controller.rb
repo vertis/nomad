@@ -38,7 +38,7 @@ class RedirectsController < ApplicationController
       headers = request.headers
       query = {"h" => {}}
       query["h"]["site_id"]=Settings.gauges_site_id
-      query["h"]["resource"]=headers['REQUEST_URI']
+      query["h"]["resource"]="http://#{headers['HTTP_HOST']}/#{headers['REQUEST_PATH']}"
       query["h"]["referrer"]=headers['HTTP_REFERRER']
       query["h"]["title"]="301 Redirect"
       query["h"]["user_agent"]=headers['HTTP_USER_AGENT']
@@ -52,7 +52,8 @@ class RedirectsController < ApplicationController
       query["h"]["browsery"]=0
       query["timestamp"]=(Time.now.to_i*1000)
       
-      ip = headers['X_FORWARDED_FOR'] || headers['REMOTE_ADDR']
+      ip = headers['HTTP_X_FORWARDED_FOR'] || headers['REMOTE_ADDR']
+      ip = ip.split(',')[0].strip
       HTTParty.get('http://secure.gaug.es/track.gif', :query => query, :headers => {'X-Forwarded-For' => ip, 'X-Real-IP' => ip, 'Remote-Addr' => ip})
 
       set_cookies
