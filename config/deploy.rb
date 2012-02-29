@@ -76,7 +76,7 @@ namespace :unicorn do
     require 'fileutils'
     #FileUtils.cp("#{release_path}/config/deploy/unicorn.sh", "/etc/init.d/nomad")
     run "cp -f #{current_path}/config/deploy/unicorn.sh /etc/init.d/nomad"
-    run "/etc/init.d/nomad upgrade"
+    run "/etc/init.d/nomad restart"
   end
 end
 
