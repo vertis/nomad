@@ -37,7 +37,7 @@ class RedirectsController < ApplicationController
       require 'httparty'
       headers = request.headers
       query = {"h" => {}}
-      query["h"]["site_id"]="4f4bf56dcb25bc56ca000097"
+      query["h"]["site_id"]=Settings.gauges_site_id
       query["h"]["resource"]=headers['REQUEST_URI']
       query["h"]["referrer"]=headers['HTTP_REFERRER']
       query["h"]["title"]="301 Redirect"

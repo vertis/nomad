@@ -35,13 +35,14 @@ gem 'exceptional'
 # Templating
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
-
-gem 'less-rails-bootstrap'
-  
+gem 'less-rails-bootstrap'  
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
 # HTTP
 gem 'httparty'
+
+# Settings
+gem 'settingslogic'
 
 group :test do
   gem 'machinist_mongo', :require => 'machinist/mongoid', :git => 'http://github.com/nmerouze/machinist_mongo.git', :branch => 'machinist2'

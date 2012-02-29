@@ -28,34 +28,18 @@
          
     </footer>
   </div>
-  <% if Rails.env=='production' %>
-      <script type="text/javascript">
-        var _gauges = _gauges || [];
-        (function() {
-          var t   = document.createElement('script');
-          t.type  = 'text/javascript';
-          t.async = true;
-          t.id    = 'gauges-tracker';
-          t.setAttribute('data-site-id', '4f2df9ad844d520610000065');
-          t.src = '//secure.gaug.es/track.js';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(t, s);
-        })();
-      </script>
-  <% else %>
-    <script type="text/javascript">
-      var _gauges = _gauges || [];
-      (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '4f4bf56dcb25bc56ca000097');
-        t.src = '/assets/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
-    </script>
-  <% end %>
+  <script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function() {
+      var t   = document.createElement('script');
+      t.type  = 'text/javascript';
+      t.async = true;
+      t.id    = 'gauges-tracker';
+      t.setAttribute('data-site-id', '<%= Settings.gauges_site_id %>');
+      t.src = '//secure.gaug.es/track.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+    })();
+  </script>
 </body>
 </html>
