@@ -51,17 +51,15 @@ class RedirectsController < ApplicationController
       query["h"]["browserx"]=0
       query["h"]["browsery"]=0
       query["timestamp"]=(Time.now.to_i*1000)
-
+      
       ip = headers['X_FORWARDED_FOR'] || headers['REMOTE_ADDR']
-      Rails.logger.debug("IP: #{ip}")
-      Rails.logger.debug("Query: #{query}")
       HTTParty.get('http://secure.gaug.es/track.gif', :query => query, :headers => {'X-Forwarded-For' => ip, 'X-Real-IP' => ip, 'Remote-Addr' => ip})
 
       set_cookies
     end
 
     def set_cookies
-      cookies[:_gauges_cookie] = { :value => 1, :expires => 1.day.from_now }
+      cookies[:_gauges_cookie] = 1
       cookies[:_gauges_unique_hour] = { :value => 1, :expires => 1.hour.from_now } unless cookies[:_gauges_unique_hour]
       cookies[:_gauges_unique_day] = { :value => 1, :expires => 1.day.from_now } unless cookies[:_gauges_unique_day]
       cookies[:_gauges_unique_month] = { :value => 1, :expires => 1.month.from_now } unless cookies[:_gauges_unique_month]
@@ -70,27 +68,27 @@ class RedirectsController < ApplicationController
     end
 
     def unique
-      return 0 unless cookies[:_gauges_cookie]
+      return 0 if cookies[:_gauges_cookie].present?
       return cookies[:_gauges_unique] ? 0 : 1
     end
 
     def unique_hour
-      return 0 unless cookies[:_gauges_cookie]
+      return 0 if cookies[:_gauges_cookie].present?
       return cookies[:_gauges_unique_hour] ? 0 : 1
     end
 
     def unique_day
-      return 0 unless cookies[:_gauges_cookie]
+      return 0 if cookies[:_gauges_cookie].present?
       return cookies[:_gauges_unique_day] ? 0 : 1
     end
 
     def unique_month
-      return 0 unless cookies[:_gauges_cookie]
+      return 0 if cookies[:_gauges_cookie].present?
       return cookies[:_gauges_unique_month] ? 0 : 1
     end
 
     def unique_year
-      return 0 unless cookies[:_gauges_cookie]
+      return 0 if cookies[:_gauges_cookie].present?
       return cookies[:_gauges_unique_year] ? 0 : 1
     end
 end

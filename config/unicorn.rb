@@ -20,8 +20,6 @@ working_directory "/opt/apps/nomad/current" # available in 0.94.0+
 
 preload_app true
 
-timeout 30
-
 listen "/tmp/nomad_unicorn.sock", :backlog => 64
 listen 8080, :tcp_nopush => true
 
@@ -36,4 +34,16 @@ pid "/opt/apps/nomad/shared/pids/unicorn.pid"
 # so prevent them from going to /dev/null when daemonized here:
 stderr_path "/opt/apps/nomad/shared/log/unicorn.stderr.log"
 stdout_path "/opt/apps/nomad/shared/log/unicorn.stdout.log"
+
+before_fork do |server, worker|
+
+  old_pid = '/opt/apps/nomad/shared/pids/unicorn.pid.oldbin'
+  if File.exists?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+      puts "Old master alerady dead"
+    end
+  end
+end
 
