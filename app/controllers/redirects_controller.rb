@@ -34,7 +34,6 @@ class RedirectsController < ApplicationController
     end
     
     def track
-      require 'httparty'
       headers = request.headers
       query = {"h" => {}}
       query["h"]["site_id"]=Settings.gauges_site_id
