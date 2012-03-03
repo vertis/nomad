@@ -1,4 +1,4 @@
-= simple_form_for [:manage, @domain], :wrapper => :inline do |f|
+= simple_form_for [:manage, @domain], :wrapper => :bootstrap do |f|
   = f.input :name, :input_html => { :class => "span12" }, :hint => (@domain.errors[:name].empty? ? "Add your source domain here" : nil)
   = f.input :catch_all, :input_html => { :class => "span12" }, :hint => (@domain.errors[:catch_all].empty? ? "Add the default redirect target here" : nil)
   .actions
