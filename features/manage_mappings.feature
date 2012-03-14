@@ -9,7 +9,7 @@ Scenario: Create a mapping with valid details
   And I have setup a domain named 'domain1.test' with a catch all of 'http://www.blekko.com/'
   And I am logged in
   When I go to the manage domains page
-  When I click on the 'Manage' link
+  When I click on the 'Edit' link
   Then I should be on the manage domain page for 'domain1.test'
   And I should see 'Basic Details'
   And I should see 'domain1.test' in the 'Name' field

@@ -12,7 +12,7 @@ class RedirectsController < ApplicationController
       if params['path'].present? && mapping = @domain.mappings.where(:source_path => /^\/#{params['path']}/).first
         redirect_to mapping.target, :status => 301
         return
-      elsif @domain.catch_all
+      else
         log_request(:status => 301, :redirected_to => @domain.catch_all)
         redirect_to @domain.catch_all, :status => 301
         return

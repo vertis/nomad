@@ -12,5 +12,5 @@
         %td= mapping.source_path
         %td= mapping.target
         %td
-          = link_to text_with_icon('cog', 'Manage'),  edit_manage_domain_mapping_path(@domain, mapping), :class => 'btn'
+          = link_to text_with_icon('cog', 'Edit'),  edit_manage_domain_mapping_path(@domain, mapping), :class => 'btn'
           = link_to text_with_icon('trash', 'Delete'), manage_domain_mapping_path(@domain, mapping), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this mapping?', :class => 'btn'
