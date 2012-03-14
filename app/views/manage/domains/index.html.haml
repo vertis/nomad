@@ -9,7 +9,7 @@
         %thead
           %th Name
           %th Catch all
-          %th
+          %th{:style => 'width:180px'}
         %tbody
         - @domains.each do |domain|
           %tr
@@ -17,7 +17,7 @@
             %td= domain.catch_all
             %td
               .pull-right
-                = link_to image_tag('manage.png'), manage_domain_path(domain)
-                = link_to image_tag('delete.png'), manage_domain_path(domain), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this domain?'
+                = link_to text_with_icon('cog', 'Manage'), manage_domain_path(domain), :class => 'btn'
+                = link_to text_with_icon('trash', 'Delete'), manage_domain_path(domain), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this domain?', :class => 'btn'
 
 
