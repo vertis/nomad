@@ -4,7 +4,7 @@ class RedirectsController < ApplicationController
   include Gauges
 
   def index
-    hostname = request.headers['HTTP_HOST']
+    hostname = request.headers['HTTP_HOST'] || 'localhost'
     hostname, port = hostname.split(':')
     @domain = Domain.where(:name => /#{hostname}/).first
     #@domain ||= Domain.where(:alternative_names => /#{hostname}/).first
