@@ -16,7 +16,7 @@ Scenario: Create a new domain with valid details
   Given I am an existing user
   And I am logged in
   When I go to the manage domains page
-  And I click on the 'New Domain' link
+  And I click on the 'Add a domain' link
   Then I should be on the new domain page
   When I enter 'domain1.test' into the 'Name' field
   And I enter 'http://www.blekko.com' into the 'Catch all' field
@@ -31,7 +31,7 @@ Scenario: Create a new domain with missing details
   Given I am an existing user
   And I am logged in
   When I go to the manage domains page
-  And I click on the 'New Domain' link
+  And I click on the 'Add a domain' link
   Then I should be on the new domain page
   When I enter '' into the 'Name' field
   And I enter '' into the 'Catch all' field
@@ -44,7 +44,7 @@ Scenario: Create a new domain with incorrectly formatted details
   Given I am an existing user
   And I am logged in
   When I go to the manage domains page
-  And I click on the 'New Domain' link
+  And I click on the 'Add a domain' link
   Then I should be on the new domain page
   When I enter 'http://blekko.com' into the 'Name' field
   And I enter 'www.blekko.com' into the 'Catch all' field
