@@ -3,6 +3,7 @@
     %li.dropdown
       %a{:href => "#", :class => 'dropdown-toggle', :"data-toggle" => 'dropdown'}
         = current_user.email
+        %span{:class=>"caret"}
       %ul.dropdown-menu
         %li
           %a{:href => '/users/edit'} Account settings
