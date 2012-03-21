@@ -1,17 +1,20 @@
-.page-header
-  %h1 Manage Domain
-%ul{:class => 'nav nav-tabs'}
-  %li{:class => 'active'}
-    %a{:href => '#basic', :"data-toggle" => 'tab'} Basic Details
-  %li
-    %a{:href => '#mappings', :"data-toggle" => 'tab'} Mappings
-  
+.content
+  .page-header
+    %h1 Manage Domain
+  .row
+    .span12
+      %ul{:class => 'nav nav-tabs'}
+        %li{:class => 'active'}
+          %a{:href => '#basic', :"data-toggle" => 'tab'} Basic Details
+        %li
+          %a{:href => '#mappings', :"data-toggle" => 'tab'} Mappings
+        
 
-.tab-content
-  .tab-pane{:id => 'basic', :class => 'active'}
-    = render 'basic_form'
-  .tab-pane{:id => 'mappings'}
-    = render 'mappings'
+      .tab-content
+        .tab-pane{:id => 'basic', :class => 'active'}
+          = render 'basic_form'
+        .tab-pane{:id => 'mappings'}
+          = render 'mappings'
 
 :javascript
   $(function () {
