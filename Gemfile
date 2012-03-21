@@ -35,7 +35,9 @@ gem 'exceptional'
 # Templating
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
-gem 'less-rails-bootstrap'  
+
+gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
+ 
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
 # HTTP
