@@ -18,5 +18,383 @@ body { padding-top: 60px; }
 // Example:
 // @linkColor: #ff0000;
 
-@import "variables";
-@import "bootswatch";
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// Swatch: Spacelab
+// Version: 2.0.2
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black:                 #000;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #F5F5F5;
+@white:                 #fff;
+
+
+// Accent colors
+// -------------------------
+@blue:                  #4183C4;
+@blueDark:              #405A6A;
+@green:                 #84DE81;
+@red:                   #E5322C;
+@yellow:                #F4CA00;
+@orange:                #FF7D00;
+@pink:                  #F44B8C;
+@purple:                #405A6A;
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        @white;
+@textColor:             @grayDark;
+
+
+// Links
+// -------------------------
+@linkColor:             #4183C4;
+@linkColorHover:        @linkColor;
+
+
+// Typography
+// -------------------------
+@baseFontSize:          13px;
+@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@baseLineHeight:        18px;
+@altFontFamily:         Georgia, "Times New Roman", Times, serif;
+
+@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
+
+
+// Tables
+// -------------------------
+@tableBackground:                   transparent; // overall background-color
+@tableBackgroundAccent:             #f9f9f9; // for striping
+@tableBackgroundHover:              #f5f5f5; // for hover
+@tableBorder:                       #ddd; // table and cell border
+
+
+// Buttons
+// -------------------------
+@btnBackground:                     @white;
+@btnBackgroundHighlight:            darken(@white, 10%);
+@btnBorder:                         darken(@white, 20%);
+
+@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              @gray;
+@btnInverseBackgroundHighlight:     @grayDarker;
+
+
+// Forms
+// -------------------------
+@inputBackground:               @white;
+@inputBorder:                   #ccc;
+@inputDisabledBackground:       @grayLighter;
+
+
+// Dropdowns
+// -------------------------
+@dropdownBackground:            @white;
+@dropdownBorder:                rgba(0,0,0,.2);
+@dropdownLinkColor:             @grayDark;
+@dropdownLinkColorHover:        @white;
+@dropdownLinkBackgroundHover:   @linkColor;
+
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:          1000;
+@zindexPopover:           1010;
+@zindexTooltip:           1020;
+@zindexFixedNavbar:       1030;
+@zindexModalBackdrop:     1040;
+@zindexModal:             1050;
+
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath:          "../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
+
+// Input placeholder text color
+// -------------------------
+@placeholderText:         @grayLight;
+
+
+// Hr border color
+// -------------------------
+@hrBorder:                @grayLighter;
+
+
+// Navbar
+// -------------------------
+@navbarHeight:                    40px;
+@navbarBackground:                #EAEAEA;
+@navbarBackgroundHighlight:       lighten(@navbarBackground, 15%);
+
+@navbarText:                      @grayDarker;
+@navbarLinkColor:                 @grayDarker;
+@navbarLinkColorHover:            @linkColor;
+@navbarLinkColorActive:           @navbarLinkColorHover;
+@navbarLinkBackgroundHover:       transparent;
+@navbarLinkBackgroundActive:      @navbarBackground;
+
+@navbarSearchBackground:          lighten(@navbarBackground, 25%);
+@navbarSearchBackgroundFocus:     @white;
+@navbarSearchBorder:              darken(@navbarSearchBackground, 30%);
+@navbarSearchPlaceholderColor:    #ccc;
+
+
+// Hero unit
+// -------------------------
+@heroUnitBackground:              @grayLighter;
+@heroUnitHeadingColor:            inherit;
+@heroUnitLeadColor:               inherit;
+
+
+// Form states and alerts
+// -------------------------
+@warningText:             #393939;
+@warningBackground:       #F5F3B4;
+@warningBorder:           darken(spin(@warningBackground, -10), 3%);
+
+@errorText:               @warningText;
+@errorBackground:         #FFE9E9;
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+@successText:             #333;
+@successBackground:       #BEDEBE;
+@successBorder:           darken(spin(@successBackground, -10), 5%);
+
+@infoText:                #1B3650;
+@infoBackground:          #E4F0FF;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;
+
+// Bootswatch.less
+// Swatch: Spacelab
+// Version: 2.0.2
+// -----------------------------------------------------
+
+// NAVBAR
+// -----------------------------------------------------
+
+// navbar style
+.navbar {
+	border-bottom: 1px solid #CACACA;
+	
+	.brand {
+		font-size: 20px;
+		font-weight: bold;
+		color: @textColor;
+	
+		&:hover {
+			color: @linkColor;
+		}
+	}
+}
+
+// navbar dropshadow
+.navbar .navbar-inner {
+	.box-shadow(0 1px 0 rgba(255,255,255,0.4));
+	.box-shadow(0 0 10px rgba(0,0,0,0.1));
+}
+
+// nav item typography
+.navbar .nav > li > a {
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.navbar .nav .active > a {
+	background-color: transparent;
+	color: @textColor;
+	
+	&:hover {
+		background-color: transparent;
+		color: @linkColor;
+	}
+}
+
+.navbar .nav > li > a:hover,
+.navbar .nav .open.dropdown .dropdown-toggle {
+	color: @linkColor !important;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+	border-top-color: @textColor;
+	opacity: 1;
+}
+
+.nav .open.dropdown .caret,
+.nav .dropdown-toggle:hover .caret {
+	border-top-color: @linkColor !important;
+}
+
+div.subnav .nav > li > a {
+	font-weight: bold;
+	color: #777;
+	
+	&:hover {
+		color: @linkColor;
+	}
+}
+
+div.subnav .nav > li.active > a {
+	color: @textColor;
+	
+	&:hover {
+		color: @grayDark;
+	}
+}
+
+div.subnav .nav > li > .dropdown-toggle {
+	background-color: transparent;
+	color: @linkColor;
+}
+
+.navbar-search .search-query,
+.navbar-search .search-query:hover {
+	border: none;
+	color: @grayLight;
+	.placeholder(@grayLight);
+	.box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.5));
+	
+    &:focus,
+    &.focused {
+		.box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.5));
+		color: @textColor;
+	}
+}
+
+.navbar .nav-collapse.in > .nav li > a {
+
+	color: @textColor;
+
+	.caret {
+		border-top-color: @grayLight;
+	}
+}
+
+
+.navbar .nav-collapse.in > .nav li > a:hover {
+	text-shadow: none;
+	color: @linkColor;
+	background-color: transparent;
+	
+	.caret {
+		border-top-color: @white;
+	}
+}
+
+// BUTTON
+// -----------------------------------------------------
+
+.btn {
+	.buttonBackground(#F4F4F4, #ECECEC);
+}
+
+.btn-primary {
+	.buttonBackground(#909090, #3F3F3F);
+}
+
+.btn-warning {
+  .buttonBackground(lighten(@yellow, 15%), @yellow);
+}
+
+.btn-danger {
+  .buttonBackground(lighten(#DA2D2D, 15%), #DA2D2D);
+}
+
+.btn-success {
+  .buttonBackground(#8ADD6D, #60B044);
+}
+
+.btn-info {
+  .buttonBackground(lighten(#4488BB, 15%), #4488BB);
+}
+
+.btn-inverse {
+  .buttonBackground(lighten(@purple, 5%), @purple);
+}
+
+// FORMS
+// -----------------------------------------------------
+
+.control-group.warning {
+  .formFieldState(#E29235, #E29235, @warningBackground);
+}
+
+.control-group.error {
+  .formFieldState(#C00, #C00, @errorBackground);
+}
+
+.control-group.success {
+  .formFieldState(#2BA949, #2BA949, @successBackground);
+}
+
+
+// MISC
+// -----------------------------------------------------
+
+.label-important { background-color: #BD2C00; }
+.label-warning   { background-color: #E3E84D; }
+.label-success   { background-color: #6CC644; }
+.label-info      { background-color: #4183C4; }
+
+.hero-unit {
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+    border: 1px solid rgba(0,0,0,.05);
+}
+
