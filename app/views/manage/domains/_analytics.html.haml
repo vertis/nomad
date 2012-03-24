@@ -1,0 +1,13 @@
+%h2 Last 30 unmapped requests
+.options{:style => 'text-align:right; margin-bottom:20px'}
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Source Path
+      %th Target
+      %th{:style => 'width: 180px'}
+  %tbody
+    - @domain.requests.limit(30).desc(:timestamp).each do |entry|
+      %tr
+        %td= mapping.source_path
+        %td= mapping.target
