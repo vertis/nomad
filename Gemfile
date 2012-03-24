@@ -37,6 +37,7 @@ gem "haml", ">= 3.0.0"
 gem "haml-rails"
 
 gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'font-awesome-rails'
  
 gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 
