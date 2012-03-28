@@ -22,7 +22,7 @@ Scenario: Creating an account
   When I enter 'test@example.com' into the 'Email' field
   And I enter 'password' into the 'Password' field
   And I enter 'password' into the 'Password confirmation' field
-  And I click the 'Sign up' button
+  And I click the 'Register' button
   Then I should be on the manage domains page
   
   
