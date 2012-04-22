@@ -4,6 +4,7 @@ class RedirectsController < ApplicationController
   def index
     hostname = request.headers['HTTP_HOST'] || 'localhost'
     hostname, port = hostname.split(':')
+    hostname.gsub!(/^www\./,'')
     @domain = Domain.where(:name => /#{hostname}/).first
     #@domain ||= Domain.where(:alternative_names => /#{hostname}/).first
     if @domain

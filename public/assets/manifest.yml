@@ -1,19 +1,8 @@
 ---
-!binary "YmFja2dyb3VuZC5wbmc=": background-b2972920f153e58cdf610b5e0dd340e3.png
-!binary "Y2FtcGVyLnBuZw==": camper-b4124598fcc75eafeba67993c0f992c4.png
-!binary "ZGVsZXRlLnBuZw==": delete-90266b8909f9a2051d3b33ae12a3f2c5.png
-!binary "ZWRpdC5wbmc=": edit-84b16abb0d486d0675e870631b4012ed.png
-!binary "bWFuYWdlLnBuZw==": manage-6297b00cfd40e4427906585ca781411d.png
-!binary "cmFpbHMucG5n": rails-e4b51606cd77fda2615e7439907bfc92.png
-!binary "YXBwbGljYXRpb24uanM=": application-bf5edfa55c926163adf9369e22d1735d.js
-!binary "YXBwbGljYXRpb24uY3Nz": application-adda2041449b43158e56ea5114b45add.css
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5lb3Q=": fontawesome-webfont-45c557cf62986c31b46066d36d4e79af.eot
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5zdmc=": fontawesome-webfont-3d022ced103bef04e1220cf5fbbf8467.svg
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5zdmd6": fontawesome-webfont-cb7e668ca613edf21bd3714225125c2e.svgz
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC50dGY=": fontawesome-webfont-93fbf8b10cfd7ccf9aceb24aa633b229.ttf
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC53b2Zm": fontawesome-webfont-634f9c55e82f4bbe029932e96981f89b.woff
-? !binary |-
-  dHdpdHRlci9ib290c3RyYXAvZ2x5cGhpY29ucy1oYWxmbGluZ3Mtd2hpdGUu
-  cG5n
-: twitter/bootstrap/glyphicons-halflings-white-33137abcd2c204b90921315632a32a69.png
-!binary "dHdpdHRlci9ib290c3RyYXAvZ2x5cGhpY29ucy1oYWxmbGluZ3MucG5n": twitter/bootstrap/glyphicons-halflings-16cd9c1e6492843e6e32e0ab12967378.png
+fontawesome-webfont.eot: fontawesome-webfont-45c557cf62986c31b46066d36d4e79af.eot
+fontawesome-webfont.svg: fontawesome-webfont-3d022ced103bef04e1220cf5fbbf8467.svg
+fontawesome-webfont.svgz: fontawesome-webfont-cb7e668ca613edf21bd3714225125c2e.svgz
+fontawesome-webfont.ttf: fontawesome-webfont-93fbf8b10cfd7ccf9aceb24aa633b229.ttf
+fontawesome-webfont.woff: fontawesome-webfont-634f9c55e82f4bbe029932e96981f89b.woff
+twitter/bootstrap/glyphicons-halflings-white.png: twitter/bootstrap/glyphicons-halflings-white-33137abcd2c204b90921315632a32a69.png
+twitter/bootstrap/glyphicons-halflings.png: twitter/bootstrap/glyphicons-halflings-16cd9c1e6492843e6e32e0ab12967378.png
