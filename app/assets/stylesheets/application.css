@@ -1,0 +1,22 @@
+/* 
+*= require_self
+*= require 'font-awesome' 
+*= require_tree .
+*/  
+a .close {
+  cursor: default !important;
+}
+
+
+/*.btn-manage {*/
+    /*margin-top: 7px;*/
+    /*margin-left: 0;*/
+/*}*/
+
+.btn-manage img {
+    display: inline-block;
+    vertical-align: top;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid transparent;
+}
