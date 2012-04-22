@@ -13,6 +13,15 @@ describe Domain do
         @domain.valid?.should be_false
       end
     end
+    
+    context "valid" do
+      it "should strip a leading www from the name" do
+        @domain = Domain.new(:name => 'www.google.com', :catch_all => 'http://google.com')
+        @domain.save
+        @domain.name.should == 'google.com'
+        @domain.valid?.should be_true
+      end
+    end
   end
 
   describe "#catch_all" do

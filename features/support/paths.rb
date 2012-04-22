@@ -5,7 +5,7 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
-  def path_to(page_name)
+  def path_to(page_name, record_id=nil)
     case page_name
 
     when /home page/
@@ -14,6 +14,9 @@ module NavigationHelpers
       new_user_registration_path
     when /manage domains page/
       manage_domains_path
+    when /manage domain page/
+      domain = Domain.where(:name => record_id).first
+      manage_domain_path(domain)
     when /new domain page/
       new_manage_domain_path
 
