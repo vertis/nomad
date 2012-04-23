@@ -116,9 +116,10 @@ describe Manage::DomainsController do
       end
 
       it "redirects to the domain" do
+        #@mock_domain.should_receive(:name).and_return('domain1.test')
         @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain(:update_attributes => true))
         put :update, :id => "domain1.test"
-        response.should redirect_to(manage_domain_url(mock_domain))
+        response.should redirect_to(manage_domain_url('domain1.test'))
       end
     end
 

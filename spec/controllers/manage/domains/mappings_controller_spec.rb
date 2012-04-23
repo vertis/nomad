@@ -29,6 +29,7 @@ describe Manage::Domains::MappingsController do
   
   describe "POST 'create'" do
     it "should be successful" do
+      @mock_domain.should_receive(:name).and_return('domain1.test')
       @mock_mappings.should_receive(:new).and_return(@mock_mapping)
       @mock_mapping.should_receive(:save).and_return(true)
       post :create, :domain_id => "domain1.test"
@@ -52,6 +53,7 @@ describe Manage::Domains::MappingsController do
 
   describe "PUT 'update'" do
     it "should be successful" do
+      @mock_domain.should_receive(:name).and_return('domain1.test')
       @mock_mappings.should_receive(:find).with("1").and_return(@mock_mapping)
       @mock_mapping.should_receive(:update_attributes).and_return(true)
       put :update, :domain_id => "domain1.test", :id => "1"
@@ -61,6 +63,7 @@ describe Manage::Domains::MappingsController do
 
   describe "DELETE 'destroy'" do
     it "should be successful" do
+      @mock_domain.should_receive(:name).and_return('domain1.test')
       @mock_mappings.should_receive(:find).with("1").and_return(@mock_mapping)
       @mock_mapping.should_receive(:destroy).and_return(true)
       delete :destroy, :domain_id => "domain1.test", :id => "1"
