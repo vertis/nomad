@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Manage::Domains::MappingsController do
+describe Domains::MappingsController do
   before(:each) do
     @user = User.make!
     sign_in @user

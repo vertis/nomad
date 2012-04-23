@@ -8,11 +8,9 @@ Nomad::Application.routes.draw do
 
   devise_for :users
 
-  namespace :manage do
-    resources :domains, :id => %r([^/;,?]+) do
-      resources :requests, :only => [:destroy]
-      resources :mappings, :controller => "domains/mappings"
-    end
+  resources :domains, :id => %r([^/;,?]+) do
+    resources :requests, :only => [:destroy]
+    resources :mappings, :controller => "domains/mappings"
   end
 
   match '*path' => 'redirects#index'

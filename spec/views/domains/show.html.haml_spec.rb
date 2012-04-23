@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "manage/domains/show.html.haml" do
+describe "domains/show.html.haml" do
   before(:each) do
     @domain = assign(:domain, stub_model(Domain,
       :name => "Name",

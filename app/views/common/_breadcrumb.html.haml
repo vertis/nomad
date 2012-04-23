@@ -1,10 +1,10 @@
 -#%ul.breadcrumb
 -#  %li
--#    %a{:href => manage_domains_path} Home
+-#    %a{:href => domains_path} Home
 -#    - if @domain
 -#      %span.divider /
 -#  -if @domain
 -#    %li
--#      %a{:href => manage_domain_path(@domain)}= @domain.name
+-#      %a{:href => domain_path(@domain)}= @domain.name
 
 = breadcrumb

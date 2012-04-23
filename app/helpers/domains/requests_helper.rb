@@ -1,0 +1,2 @@
+module Domains::RequestsHelper
+end

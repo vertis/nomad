@@ -1,0 +1,16 @@
+.options{:style => 'text-align:right; margin-bottom:20px'}
+  = link_to text_with_icon('plus', 'Add a mapping'), new_domain_mapping_path(@domain.name), :class => 'btn'
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Source Path
+      %th Target
+      %th{:style => 'width: 180px'}
+  %tbody
+    - @mappings.each do |mapping|
+      %tr
+        %td= mapping.source_path
+        %td= mapping.target
+        %td
+          = link_to text_with_icon('cog', 'Edit'),  edit_domain_mapping_path(@domain.name, mapping), :class => 'btn'
+          = link_to text_with_icon('trash', 'Delete'), domain_mapping_path(@domain.name, mapping), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this mapping?', :class => 'btn'

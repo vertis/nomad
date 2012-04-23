@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "manage/domains/new.html.haml" do
+describe "domains/new.html.haml" do
   before(:each) do
     assign(:domain, stub_model(Domain,
       :name => "MyString",
@@ -12,7 +12,7 @@ describe "manage/domains/new.html.haml" do
     render
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form", :action => manage_domains_path, :method => "post" do
+    assert_select "form", :action => domains_path, :method => "post" do
       assert_select "input#domain_name", :name => "domain[name]"
       assert_select "input#domain_catch_all", :name => "domain[catch_all]"
     end

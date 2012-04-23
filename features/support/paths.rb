@@ -8,17 +8,17 @@ module NavigationHelpers
   def path_to(page_name, record_id=nil)
     case page_name
 
-    when /home page/
+    when /the home page/
       '/'
-    when /new user registrations page/
+    when /the new user registrations page/
       new_user_registration_path
-    when /manage domains page/
-      manage_domains_path
-    when /manage domain page/
+    when /the domains page/
+      domains_path
+    when /the domain page/
       #domain = Domain.where(:name => record_id).first
-      manage_domain_path(record_id)
-    when /new domain page/
-      new_manage_domain_path
+      domain_path(record_id)
+    when /the new domain page/
+      new_domain_path
 
     else
       begin

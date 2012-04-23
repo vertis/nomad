@@ -1,0 +1,2 @@
+module Domains::MappingsHelper
+end

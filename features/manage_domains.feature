@@ -5,23 +5,23 @@ Feature: Manage domains
 
 
 @javascript
-Scenario: Should be redirected to the manage domains page if logged in
+Scenario: Should be redirected to the domains page if logged in
   Given I am an existing user
   And I am logged in
   When I go to the home page
-  Then I should be on the manage domains page
+  Then I should be on the domains page
 
 @javascript
 Scenario: Create a new domain with valid details
   Given I am an existing user
   And I am logged in
-  When I go to the manage domains page
+  When I go to the domains page
   And I click on the 'Add a domain' link
   Then I should be on the new domain page
   When I enter 'domain1.test' into the 'Name' field
   And I enter 'http://www.blekko.com' into the 'Catch all' field
   And I click the 'Create Domain' button
-  Then I should be on the manage domains page
+  Then I should be on the domains page
   And I should see 'domain1.test'
   And I should see 'http://www.blekko.com'
   And I should see 'Domain added successfully'
@@ -30,13 +30,13 @@ Scenario: Create a new domain with valid details
 Scenario: Create a new domain with valid details and www on the domain
   Given I am an existing user
   And I am logged in
-  When I go to the manage domains page
+  When I go to the domains page
   And I click on the 'Add a domain' link
   Then I should be on the new domain page
   When I enter 'www.domain1.test' into the 'Name' field
   And I enter 'http://www.blekko.com' into the 'Catch all' field
   And I click the 'Create Domain' button
-  Then I should be on the manage domains page
+  Then I should be on the domains page
   And I should not see "www.domain1.test"
   And I should see 'domain1.test'
   And I should see 'http://www.blekko.com'
@@ -47,7 +47,7 @@ Scenario: Create a new domain with valid details and www on the domain
 Scenario: Create a new domain with missing details
   Given I am an existing user
   And I am logged in
-  When I go to the manage domains page
+  When I go to the domains page
   And I click on the 'Add a domain' link
   Then I should be on the new domain page
   When I enter '' into the 'Name' field
@@ -60,7 +60,7 @@ Scenario: Create a new domain with missing details
 Scenario: Create a new domain with incorrectly formatted details
   Given I am an existing user
   And I am logged in
-  When I go to the manage domains page
+  When I go to the domains page
   And I click on the 'Add a domain' link
   Then I should be on the new domain page
   When I enter 'http://blekko.com' into the 'Name' field

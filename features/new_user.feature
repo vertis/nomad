@@ -23,6 +23,6 @@ Scenario: Creating an account
   And I enter 'password' into the 'Password' field
   And I enter 'password' into the 'Password confirmation' field
   And I click the 'Register' button
-  Then I should be on the manage domains page
+  Then I should be on the domains page
   
   

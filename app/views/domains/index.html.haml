@@ -1,7 +1,7 @@
 .content
   .page-header
     .options.pull-right
-      = link_to text_with_icon('plus', 'Add a domain'), new_manage_domain_path, :class => 'btn primary'
+      = link_to text_with_icon('plus', 'Add a domain'), new_domain_path, :class => 'btn primary'
     %h1 Domains
   .row
     .span12
@@ -17,7 +17,7 @@
             %td= domain.catch_all
             %td
               .pull-right
-                = link_to text_with_icon('cog', 'Edit'), manage_domain_path(domain.name), :class => 'btn'
-                = link_to text_with_icon('trash', 'Delete'), manage_domain_path(domain.name), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this domain?', :class => 'btn'
+                = link_to text_with_icon('cog', 'Edit'), domain_path(domain.name), :class => 'btn'
+                = link_to text_with_icon('trash', 'Delete'), domain_path(domain.name), :method => 'DELETE', :confirm => 'Are you sure you wish to delete this domain?', :class => 'btn'
 
 
