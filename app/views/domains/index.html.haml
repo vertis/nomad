@@ -2,7 +2,7 @@
   .page-header
     .options.pull-right
       = link_to text_with_icon('plus', 'Add a domain'), new_domain_path, :class => 'btn primary'
-    %h1 Domains
+    %h2=breadcrumbs
   .row
     .span12
       %table.table.table-striped.table-bordered{:id => 'domains'}

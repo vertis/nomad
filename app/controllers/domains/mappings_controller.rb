@@ -1,8 +1,11 @@
 class Domains::MappingsController < ApplicationController
-
+  add_crumb "Domains", '/domains'
+  
   def new
     @domain = current_user.domains.by_name(params[:domain_id])
     @mapping = @domain.mappings.new
+    add_crumb @domain.name, "/domains/#{params[:domain_id]}"
+    add_crumb 'add a mapping'
   end
 
   def create
@@ -21,6 +24,8 @@ class Domains::MappingsController < ApplicationController
   def edit
     @domain = current_user.domains.by_name(params[:domain_id])
     @mapping = @domain.mappings.find(params[:id])
+    add_crumb @domain.name, "/domains/#{params[:domain_id]}"
+    add_crumb @mapping.slug
   end
 
   def update

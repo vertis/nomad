@@ -4,7 +4,7 @@ describe Domains::MappingsController do
   before(:each) do
     @user = User.make!
     sign_in @user
-    @mock_domain = mock("domain")
+    @mock_domain = mock("domain", :name => 'domain1.test')
     @mock_domains = mock("domains")
     @mock_mappings = mock("mappings")
     @mock_mapping = mock("mapping")
@@ -39,12 +39,14 @@ describe Domains::MappingsController do
   
   describe "GET 'edit'" do
     it "should assign a domain" do
+      @mock_mapping.should_receive(:slug).and_return('/example')
       @mock_mappings.should_receive(:find).with("1").and_return(@mock_mapping)
       get :edit, :domain_id => "domain1.test", :id => "1"
       assigns[:domain].should == @mock_domain
     end
     
     it "should assign a mapping" do
+      @mock_mapping.should_receive(:slug).and_return('/example')
       @mock_mappings.should_receive(:find).with("1").and_return(@mock_mapping)
       get :edit, :domain_id => "domain1.test", :id => "1"
       assigns[:mapping].should == @mock_mapping

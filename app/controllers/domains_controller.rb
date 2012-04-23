@@ -1,5 +1,8 @@
 class DomainsController < ApplicationController
   before_filter :authenticate_user!
+  
+  add_crumb "Domains", '/domains'
+  
   # GET /domains
   # GET /domains.xml
   def index
@@ -25,6 +28,7 @@ class DomainsController < ApplicationController
   # GET /domains/new
   # GET /domains/new.xml
   def new
+    add_crumb "add a domain"
     @domain = current_user.domains.new
 
     respond_to do |format|
@@ -36,6 +40,7 @@ class DomainsController < ApplicationController
   # GET /domains/1
   def show
     @domain = current_user.domains.by_name(params[:id])
+    add_crumb @domain.name
     @mappings = @domain.mappings
   end
 

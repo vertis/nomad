@@ -14,4 +14,9 @@ class Mapping
   def ok?
     Net::HTTP.get_response(URI.parse(target)).code.to_i == 200
   end
+  
+  def slug
+    slug = self.source_path.length>21 ? self.source_path[0..21]+' ...' : self.source_path
+    slug.gsub(/^\//,'')
+  end
 end

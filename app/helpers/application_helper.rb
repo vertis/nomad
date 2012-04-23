@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def breadcrumb
-    "Hello"
+  def breadcrumbs
+    raw render_crumbs :separator => ' / '
   end
 
   def text_with_icon(icon_name, text)
