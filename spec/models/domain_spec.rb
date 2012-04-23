@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe Domain do
+  describe "#by_name" do
+    it "should return the domain" do
+      @domain = Domain.create(:name => 'domain1.test', :catch_all => 'http://domain2.test')
+      Domain.by_name('domain1.test').should == @domain
+    end
+  end
+  
   describe "#name" do
     context "invalid" do
       it "should be invalid if the name is nil" do

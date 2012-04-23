@@ -22,4 +22,8 @@ class Domain
     return if name.nil?
     name.gsub!(/^www\./i,'')
   end
+  
+  def self.by_name(name)
+    self.where(:name => name).first
+  end
 end

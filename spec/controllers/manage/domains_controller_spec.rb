@@ -34,8 +34,8 @@ describe Manage::DomainsController do
     end
 
     it "assigns the requested domain as @domain" do
-      @mock_domains.should_receive(:find).with("37").and_return(mock_domain)
-      get :show, :id => "37"
+      @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain)
+      get :show, :id => "domain1.test"
       assigns(:domain).should be(mock_domain)
     end
   end
@@ -104,34 +104,34 @@ describe Manage::DomainsController do
 
     describe "with valid params" do
       it "updates the requested domain" do
-        @mock_domains.should_receive(:find).with("37").and_return(mock_domain)
+        @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain)
         mock_domain.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :domain => {'these' => 'params'}
+        put :update, :id => "domain1.test", :domain => {'these' => 'params'}
       end
 
       it "assigns the requested domain as @domain" do
-        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => true))
-        put :update, :id => "1"
+        @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain(:update_attributes => true))
+        put :update, :id => "domain1.test"
         assigns(:domain).should be(mock_domain)
       end
 
       it "redirects to the domain" do
-        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => true))
-        put :update, :id => "1"
+        @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain(:update_attributes => true))
+        put :update, :id => "domain1.test"
         response.should redirect_to(manage_domain_url(mock_domain))
       end
     end
 
     describe "with invalid params" do
       it "assigns the domain as @domain" do
-        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => false))
-        put :update, :id => "1"
+        @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain(:update_attributes => false))
+        put :update, :id => "domain1.test"
         assigns(:domain).should be(mock_domain)
       end
 
       it "re-renders the 'edit' template" do
-        @mock_domains.should_receive(:find).with("1").and_return(mock_domain(:update_attributes => false))
-        put :update, :id => "1"
+        @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain(:update_attributes => false))
+        put :update, :id => "domain1.test"
         response.should render_template("show")
       end
     end
@@ -146,14 +146,14 @@ describe Manage::DomainsController do
     end
 
     it "destroys the requested domain" do
-      @mock_domains.should_receive(:find).with("37").and_return(mock_domain)
+      @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain)
       mock_domain.should_receive(:destroy)
-      delete :destroy, :id => "37"
+      delete :destroy, :id => "domain1.test"
     end
 
     it "redirects to the domains list" do
-      @mock_domains.should_receive(:find).with("1").and_return(mock_domain)
-      delete :destroy, :id => "1"
+      @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain)
+      delete :destroy, :id => "domain1.test"
       response.should redirect_to(manage_domains_url)
     end
   end

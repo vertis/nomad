@@ -1,4 +1,5 @@
-= simple_form_for [:manage, @domain], :wrapper => :bootstrap do |f|
+- form_path = @domain.new_record? ? manage_domains_path : manage_domain_path(@domain.name)
+= simple_form_for [:manage, @domain], :url => form_path, :wrapper => :bootstrap do |f|
   = f.input :name, :input_html => { :class => "span12" }, :hint => (@domain.errors[:name].empty? ? "Add your source domain here" : nil)
   = f.input :catch_all, :input_html => { :class => "span12" }, :hint => (@domain.errors[:catch_all].empty? ? "Add the default redirect target here" : nil)
   .actions

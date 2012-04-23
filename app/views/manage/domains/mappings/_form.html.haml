@@ -1,4 +1,5 @@
-= simple_form_for([:manage, @domain, @mapping], :wrapper => :bootstrap) do |f|
+- form_path = @mapping.new_record? ? manage_domain_mappings_path(@domain.name) : manage_domain_mapping_path(@domain.name, @mapping)
+= simple_form_for([:manage, @domain, @mapping], :url => form_path, :wrapper => :bootstrap) do |f|
   = f.input :source_path, :input_html => { :class => "span6" }, :placeholder => "/example"
   = f.input :target, :input_html => { :class => "span6" }, :placeholder => 'http://www.blekko.com/ws/example'
   = f.button :submit, :class => 'primary'

@@ -35,7 +35,7 @@ class Manage::DomainsController < ApplicationController
 
   # GET /manage/domains/1
   def show
-    @domain = current_user.domains.find(params[:id])
+    @domain = current_user.domains.by_name(params[:id])
     @mappings = @domain.mappings
   end
 
@@ -59,13 +59,13 @@ class Manage::DomainsController < ApplicationController
   # PUT /manage/domains/1
   # PUT /manage/domains/1.xml
   def update
-    @domain = current_user.domains.find(params[:id])
+    @domain = current_user.domains.by_name(params[:id])
 
     respond_to do |format|
       domain = params[:domain]
       #domain[:alternative_names] = domain[:alternative_names].split(',').map(&:strip)
       if @domain.update_attributes(domain)
-        format.html { redirect_to([:manage, @domain], :notice => 'Domain was successfully updated.') }
+        format.html { redirect_to(manage_domain_path(@domain.name), :notice => 'Domain was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "show" }
@@ -77,7 +77,7 @@ class Manage::DomainsController < ApplicationController
   # DELETE /manage/domains/1
   # DELETE /manage/domains/1.xml
   def destroy
-    @domain = current_user.domains.find(params[:id])
+    @domain = current_user.domains.by_name(params[:id])
     @domain.destroy
 
     respond_to do |format|

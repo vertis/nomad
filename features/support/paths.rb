@@ -15,8 +15,8 @@ module NavigationHelpers
     when /manage domains page/
       manage_domains_path
     when /manage domain page/
-      domain = Domain.where(:name => record_id).first
-      manage_domain_path(domain)
+      #domain = Domain.where(:name => record_id).first
+      manage_domain_path(record_id)
     when /new domain page/
       new_manage_domain_path
 
