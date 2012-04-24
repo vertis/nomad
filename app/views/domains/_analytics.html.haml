@@ -1,13 +1,17 @@
+%p There are lots of elements planned for this section, for now it's just requests that are hitting the catch-all.
 %h2 Last 30 unmapped requests
 .options{:style => 'text-align:right; margin-bottom:20px'}
 %table.table.table-bordered.table-striped
   %thead
     %tr
       %th Source Path
-      %th Target
-      %th{:style => 'width: 180px'}
+      %th Last Request On
+      %th{:style => 'width: 30px'} Hits
+      %th{:style => 'width: 70px'}
   %tbody
-    - @domain.requests.limit(30).desc(:timestamp).each do |entry|
+    - @catches.each do |entry|
       %tr
-        %td= mapping.source_path
-        %td= mapping.target
+        %td= entry.source_path
+        %td= entry.updated_at
+        %td= entry.hits.count
+        %td= link_to text_with_icon('trash', 'Ignore'), ignore_domain_redirect_catch_path(@domain.name, entry), :method => 'PUT', :confirm => 'Are you sure you wish to ignore this path?', :class => 'btn'

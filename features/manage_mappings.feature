@@ -3,7 +3,7 @@ Feature: Manage mappings
   As a user
   I want to maintain my SEO
 
-javascript
+@javascript
 Scenario: Create a mapping with valid details
   Given I am an existing user
   And I have setup a domain named 'domain1.test' with a catch all of 'http://www.blekko.com/'

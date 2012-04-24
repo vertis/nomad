@@ -1,0 +1,2 @@
+module Domains::RedirectCatchesHelper
+end

@@ -7,6 +7,7 @@ describe "domains/show.html.haml" do
       :catch_all => "Catch All",
     ))
     @mappings = []
+    @catches = []
   end
 
   it "renders attributes" do

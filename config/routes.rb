@@ -9,9 +9,12 @@ Nomad::Application.routes.draw do
   devise_for :users
 
   resources :domains, :id => %r([^/;,?]+) do
-    resources :requests, :only => [:destroy]
+    resources :redirect_catches, :only => [], :controller => "domains/redirect_catches" do
+      put "ignore", :on => :member
+    end
     resources :mappings, :controller => "domains/mappings"
   end
+  #put "domains/:domain_id/redirect_catches/:id/ignore", :controller => "domains/redirect_catches", :action => :ignore, :as => 'ignore_domain_redirect_catch'
 
   match '*path' => 'redirects#index'
 

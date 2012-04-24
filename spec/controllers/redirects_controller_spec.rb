@@ -38,8 +38,15 @@ describe RedirectsController do
         @mock_domain.should_receive(:mappings).and_return(@mock_mappings)
         @mock_mappings.should_receive(:where).and_return([])
 
-        @mock_domain.should_receive(:catch_all).twice.and_return('http://blekko.com')
-        @mock_domain.should_receive(:requests).and_return([])
+        @mock_domain.should_receive(:catch_all).and_return('http://blekko.com')
+        
+        @mock_catch = mock("catch")
+        @mock_catch.should_receive(:touch)
+        @mock_catches = mock("catches")
+        @mock_catches.should_receive(:where).with({:source_path=>/^\/no-mapping/}).and_return([])
+        @mock_catches.should_receive(:create).with({:source_path=>"/no-mapping"}).and_return(@mock_catch)
+        @mock_domain.should_receive(:catches).twice.and_return(@mock_catches)
+        
         get :index, :path => 'no-mapping'
         response.should redirect_to('http://blekko.com')
         response.response_code.should == 301

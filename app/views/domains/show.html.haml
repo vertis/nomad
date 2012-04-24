@@ -8,6 +8,9 @@
           %a{:href => '#basic', :"data-toggle" => 'tab'} Basic Details
         %li
           %a{:href => '#mappings', :"data-toggle" => 'tab'} Mappings
+        %li
+          %a{:href => '#analytics', :"data-toggle" => 'tab'} Analytics
+        
         
 
       .tab-content
@@ -15,6 +18,9 @@
           = render 'basic_form'
         .tab-pane{:id => 'mappings'}
           = render 'mappings'
+        .tab-pane{:id => 'analytics'}
+          = render 'analytics'
+        
 
 :javascript
   $(function () {

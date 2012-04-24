@@ -1,11 +1,12 @@
 class Domain
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :name, :type => String
   field :catch_all, :type => String
 
   field :alternative_names, :type => Array
   embeds_many :mappings
-  #embeds_many :redirects
+  embeds_many :catches, :class_name => "RedirectCatch"
   
   before_save :strip_leading_www_in_name
   validates_presence_of :name, :message => 'Please enter the source domain.'

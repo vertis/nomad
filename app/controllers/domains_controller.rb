@@ -42,6 +42,7 @@ class DomainsController < ApplicationController
     @domain = current_user.domains.by_name(params[:id])
     add_crumb @domain.name
     @mappings = @domain.mappings
+    @catches = @domain.catches.where(:ignore.ne => true).limit(30).desc(:updated_at)
   end
 
   # POST /domains

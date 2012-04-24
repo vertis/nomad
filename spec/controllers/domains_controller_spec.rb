@@ -31,6 +31,13 @@ describe DomainsController do
       sign_in @user
       @mock_domains = mock("domains")
       controller.current_user.should_receive(:domains).and_return(@mock_domains)
+      @mock_limit = mock("limit")
+      @mock_limit.should_receive(:desc).with(:updated_at).and_return([])
+      @mock_where = mock("where")
+      @mock_where.should_receive(:limit).with(30).and_return(@mock_limit)
+      @mock_catches = mock("catches")
+      @mock_catches.should_receive(:where).with(:ignore.ne => true).and_return(@mock_where)
+      mock_domain.should_receive(:catches).and_return(@mock_catches)
     end
 
     it "assigns the requested domain as @domain" do
