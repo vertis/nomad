@@ -1,7 +1,7 @@
 require 'nokogiri'
 
 desc "Run everything on the CI server with all its outcomes (deploy etc)"
-task :ci do
+task :quality do
   Rake::Task['spec'].invoke
   ensure_coverage
   Rake::Task['cucumber'].invoke
