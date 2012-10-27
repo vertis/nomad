@@ -25,6 +25,7 @@ gem "foreman"
 
 # Deployment
 gem "capistrano"
+gem 'rvm-capistrano'
 gem "capistrano-ext"
 gem "capistrano_colors"
 
