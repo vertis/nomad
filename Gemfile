@@ -1,23 +1,23 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.4'
+gem 'rails', '3.2.11'
   
 # Gems used only for assets and not required  
 # in production environments by default.  
 group :assets do  
-  gem 'sass-rails', " ~> 3.1.0"  
-  gem 'coffee-rails', " ~> 3.1.0"  
-  gem 'uglifier'  
+  gem 'sass-rails', " ~> 3.2.3"  
+  gem 'coffee-rails', " ~> 3.2.1"  
+  gem 'uglifier', '>=1.0.3'  
 end  
   
 gem 'jquery-rails' 
 
 # The ORM which we will stake our application
-gem "mongoid", '>= 2.1.0'
-gem "bson_ext", ">= 1.5.2"
+gem "mongoid", '~> 2.1.0'
+gem "bson_ext", "~> 1.5.2"
 
 # Authentication
-gem "devise"
+gem "devise", '~> 1.5'
 
 # Unicorns and stuff
 gem "unicorn"

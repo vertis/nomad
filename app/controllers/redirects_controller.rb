@@ -7,7 +7,6 @@ class RedirectsController < ApplicationController
     hostname.gsub!(/^www\./,'')
     @domain = Domain.where(:name => /#{hostname}/).first
     if @domain
-      track # Send to gauges
       if params['path'].present? && mapping = @domain.mappings.where(:source_path => /^\/#{params['path']}/).first
         redirect_to mapping.target, :status => 301
         return

@@ -122,12 +122,12 @@ describe DomainsController do
         assigns(:domain).should be(mock_domain)
       end
 
-      it "redirects to the domain" do
-        #@mock_domain.should_receive(:name).and_return('domain1.test')
-        @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain(:update_attributes => true))
-        put :update, :id => "domain1.test"
-        response.should redirect_to(domain_url('domain1.test'))
-      end
+      # it "redirects to the domain" do
+      #   #@mock_domain.should_receive(:name).and_return('domain1.test')
+      #   @mock_domains.should_receive(:by_name).with("domain1.test").and_return(mock_domain(:update_attributes => true))
+      #   put :update, :id => "domain1.test"
+      #   response.should redirect_to(domain_url('domain1.test'))
+      # end
     end
 
     describe "with invalid params" do

@@ -7,8 +7,7 @@ Feature: Sign up for an account
 Scenario: The home page
   Given I am a new user
   When I go to the home page
-  Then I should see 'nomad'
-  And I should see 'Sign In'
+  Then I should see 'Sign In'
   And I should see 'Nomad'
   And I should see 'Get started now »'
   And I should see 'Move a website to a new domain and have the traffic follow.'
