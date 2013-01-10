@@ -9,6 +9,8 @@ require "bundler/capistrano"
 set :application, "nomad"
 set :repository,  "git@github.com:vertis/nomad.git"
 
+set :normalize_asset_timestamps, false #http://stackoverflow.com/questions/3023857/capistrano-and-deployment-of-a-website-from-github
+
 set :scm, :git
 ssh_options[:forward_agent] = true
 
