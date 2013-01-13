@@ -1,6 +1,4 @@
 class RedirectsController < ApplicationController
-  include Gauges
-
   def index
     hostname = request.headers['HTTP_HOST'] || 'localhost'
     hostname, port = hostname.split(':')

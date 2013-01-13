@@ -19,8 +19,8 @@ Scenario: Creating an account
   And I click on the 'Get started now »' link
   Then I should be on the new user registrations page
   When I enter 'test@example.com' into the 'Email' field
-  And I enter 'password' into the 'Password' field
-  And I enter 'password' into the 'Password confirmation' field
+  And I enter 'password' into the 'user[password]' field
+  And I enter 'password' into the 'user[password_confirmation]' field
   And I click the 'Register' button
   Then I should be on the domains page
   
