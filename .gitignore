@@ -9,3 +9,4 @@ bin
 db/mongo*
 coverage
 doc/textures
+.env
