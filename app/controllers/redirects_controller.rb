@@ -3,7 +3,7 @@ class RedirectsController < ApplicationController
     hostname = request.headers['HTTP_HOST'] || 'localhost'
     hostname, port = hostname.split(':')
     hostname.gsub!(/^www\./,'')
-    @domain = Domain.where(:name => /#{hostname}/).first
+    @domain = Domain.where(:name => /#{hostname}/).first || Domain.where(:alternative_names => /#{hostname}/).first
     if @domain
       if params['path'].present? && mapping = @domain.mappings.where(:source_path => /^\/#{params['path']}/).first
         redirect_to mapping.target, :status => 301
