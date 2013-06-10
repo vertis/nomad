@@ -270,6 +270,7 @@ DEPENDENCIES
   mina
   mongoid (~> 2.1.0)
   newrelic_rpm
+  nokogiri
   rails (= 3.2.11)
   rspec-rails (>= 2.0.1)
   sass-rails (~> 3.2.3)

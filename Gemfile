@@ -28,6 +28,7 @@ gem "foreman"
 
 # Deployment
 gem "mina"
+gem "nokogiri"
 
 # Monitoring  
 gem 'newrelic_rpm'
