@@ -1,43 +1,31 @@
 APP_ROOT = File.expand_path(File.dirname(File.dirname(__FILE__)))
-
-if ENV['MY_RUBY_HOME'] && ENV['MY_RUBY_HOME'].include?('rvm')
-  begin
-    rvm_path = File.dirname(File.dirname(ENV['MY_RUBY_HOME']))
-    rvm_lib_path = File.join(rvm_path, 'lib')
-    $LOAD_PATH.unshift rvm_lib_path
-    require 'rvm'
-    RVM.use_from_path! APP_ROOT
-  rescue LoadError
-    raise "RVM ruby lib is currently unavailable."
-  end
-end
+APP_NAME = 'nomad'
+APP_PORT = ENV['PORT'] || 80
 
 ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
 require 'bundler/setup'
 
 worker_processes 4
-working_directory "/opt/apps/nomad/current" # available in 0.94.0+
+working_directory APP_ROOT
 
 preload_app true
 
-listen "/tmp/nomad_unicorn.sock", :backlog => 64
-listen 8080, :tcp_nopush => true
+listen "/tmp/#{APP_NAME}_unicorn.sock", :backlog => 64
+listen APP_PORT, :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "/opt/apps/nomad/shared/pids/unicorn.pid"
+pid "#{APP_ROOT}/tmp/pids/unicorn.pid"
 
-# By default, the Unicorn logger will write to stderr.
-# Additionally, ome applications/frameworks log to stderr or stdout,
-# so prevent them from going to /dev/null when daemonized here:
-stderr_path "/opt/apps/nomad/shared/log/unicorn.stderr.log"
-stdout_path "/opt/apps/nomad/shared/log/unicorn.stdout.log"
+#if Rails.env == 'production'
+  #stderr_path "#{APP_ROOT}/log/unicorn.stderr.log"
+  #stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
+  #end
 
 before_fork do |server, worker|
-
-  old_pid = '/opt/apps/nomad/shared/pids/unicorn.pid.oldbin'
+  old_pid = "#{APP_ROOT}/tmp/pids/unicorn.pid.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)

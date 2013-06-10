@@ -26,6 +26,9 @@ gem "devise", '~> 1.5'
 gem "unicorn"
 gem "foreman"
 
+# Deployment
+gem "mina"
+
 # Monitoring  
 gem 'newrelic_rpm'
 gem 'exceptional'
