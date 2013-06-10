@@ -26,12 +26,6 @@ gem "devise", '~> 1.5'
 gem "unicorn"
 gem "foreman"
 
-# Deployment
-gem "capistrano"
-gem 'rvm-capistrano'
-gem "capistrano-ext"
-gem "capistrano_colors"
-
 # Monitoring  
 gem 'newrelic_rpm'
 gem 'exceptional'
