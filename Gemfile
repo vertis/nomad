@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
   
@@ -41,7 +41,7 @@ gem "haml-rails"
 gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'font-awesome-rails'
  
-gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+gem 'simple_form'
 
 # HTTP
 gem 'httparty'
@@ -53,7 +53,7 @@ gem 'settingslogic'
 gem "crummy", "~> 1.5.0"
 
 group :test do
-  gem 'machinist_mongo', :require => 'machinist/mongoid', :git => 'http://github.com/nmerouze/machinist_mongo.git', :branch => 'machinist2'
+  gem 'machinist_mongo', :require => 'machinist/mongoid', :git => 'https://github.com/nmerouze/machinist_mongo.git', :branch => 'machinist2'
 
   gem 'rspec-rails', '>= 2.0.1'
   #gem 'mongoid-rspec'
