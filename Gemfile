@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
-  
-# Gems used only for assets and not required  
-# in production environments by default.  
-group :assets do  
-  gem 'sass-rails', " ~> 3.2.3"  
-  gem 'coffee-rails', " ~> 3.2.1"  
+gem 'rails', '~> 3.2.16'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', " ~> 3.2.3"
+  gem 'coffee-rails', " ~> 3.2.1"
   gem 'uglifier', '>=1.0.3'
   gem 'less-rails'
   gem 'therubyracer'
-  gem 'libv8', '~> 3.11.8'  
-end  
-  
-gem 'jquery-rails' 
+  gem 'libv8', '~> 3.11.8'
+end
+
+gem 'jquery-rails'
 
 # The ORM which we will stake our application
 gem "mongoid", '~> 2.1.0'
@@ -30,7 +30,7 @@ gem "foreman"
 gem "mina"
 gem "nokogiri"
 
-# Monitoring  
+# Monitoring
 gem 'newrelic_rpm'
 gem 'exceptional'
 
@@ -40,7 +40,7 @@ gem "haml-rails"
 
 gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'font-awesome-rails'
- 
+
 gem 'simple_form'
 
 # HTTP
