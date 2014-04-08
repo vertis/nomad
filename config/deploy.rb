@@ -34,6 +34,11 @@ task :'rbenv:load' do
   }
 end
 
+# To fix heartbleed, but probably useful in future as well
+task :'update-system' do
+  queue 'apt-get update && apt-get -y upgrades && service nginx restart'
+end
+
 task :environment do
   invoke :'rbenv:load'
 end
